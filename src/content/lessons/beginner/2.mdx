@@ -1,0 +1,47 @@
+---
+title: "What is an LLM?"
+description: "A deep dive into how Large Language Models actually work under the hood."
+duration: "20 min"
+trackId: "beginner"
+examples: "### Example: Token Prediction\nWhen an LLM sees 'The capital of France is...', it doesn't 'know' geography; it calculates that the token 'Paris' has a 99.9% probability of following that specific sequence of words based on its training data."
+humanModeContent: "An LLM is like a super-powered version of 'autofill' on your phone. It has read almost everything on the internet and has become an expert at guessing what word comes next in a sentence."
+quiz:
+  - question: "What does LLM stand for?"
+    options: ["Logic Learning Machine", "Large Language Model", "Linear Logic Mapper", "Linked Language Matrix"]
+    correctAnswer: 1
+    explanation: "LLM stands for Large Language Model."
+  - question: "How does an LLM 'know' what to say?"
+    options: ["It searches Google for every answer", "It follows a strict set of grammar rules", "It predicts the next most likely word (token)", "It has its own opinions and feelings"]
+    correctAnswer: 2
+  - question: "What is an 'Embedding' in an LLM?"
+    options: ["A way to hide data", "A numerical representation of a word's meaning", "A type of computer screen", "A physical chip"]
+    correctAnswer: 1
+    explanation: "Embeddings convert words into long lists of numbers (vectors) so the computer can calculate the relationships between different concepts."
+  - question: "Why is 'Context' so important for an LLM?"
+    options: ["It makes the LLM faster", "It helps the model understand which meaning of a word is being used", "It is required for the internet to work", "It is only for human readers"]
+    correctAnswer: 1
+    explanation: "Many words have multiple meanings (e.g., 'bank'). Context tells the model whether you mean a river bank or a financial institution."
+  - question: "What is the 'Attention Mechanism'?"
+    options: ["The AI's ability to focus on the user", "A system that allows the model to weigh the importance of different words in a sentence", "A notification system", "A way to make the AI louder"]
+    correctAnswer: 1
+    explanation: "Attention allows the model to focus on the most relevant words in a prompt (e.g., in 'The boy threw the ball', attention links 'threw' to 'boy' and 'ball')."
+---
+
+# What is an LLM?
+
+Large Language Models (LLMs) like GPT-4, Claude, and Gemini are the "brains" behind the current AI revolution. But how do they actually function?
+
+## The Token Prediction Engine
+
+At its simplest level, an LLM is a **next-token predictor**. 
+
+Imagine I say: *"The cat sat on the..."*
+The LLM doesn't "think" about furniture. It calculates that "mat" has an 85% probability, "floor" has a 10% probability, and "moon" has a 0.01% probability.
+
+### Key Mechanics:
+1. **Training:** The model reads trillions of words to learn the relationship between them.
+2. **Embeddings:** Words are converted into numbers (vectors) so the computer can calculate "distance" between meanings (e.g., 'King' is closer to 'Queen' than to 'Apple').
+3. **Attention:** The model learns which words in a sentence are the most important for understanding context.
+
+## It’s All About Math
+When you talk to an LLM, you aren't talking to a person. You are interacting with a massive, multi-dimensional map of human knowledge. The "intelligence" emerges from the sheer scale of the patterns it has memorized.

@@ -1,0 +1,84 @@
+---
+title: "The Anatomy of an Agent"
+description: "Deconstruct the internal architecture of an autonomous agent: Perception, Reasoning, and Action."
+duration: "60 min"
+humanModeContent: "An agent is like an employee you give a goal to, rather than just a set of instructions. It has a 'brain' to think, 'eyes' to see your data, and 'hands' to use tools like email or code."
+examples: |
+  ### Case Study 1: The Autonomous SDR
+  A Sales Development Representative (SDR) agent is given the goal: 'Find 10 leads in the SaaS space and send a personalized email.' 
+  **Perception:** It searches LinkedIn for profiles.
+  **Reasoning:** It analyzes each profile to find a common connection or pain point.
+  **Action:** It writes and sends a customized email through Gmail.
+  
+  ### Case Study 2: The Self-Healing Server Agent
+  A DevOps agent monitors server logs 24/7.
+  **Perception:** It detects a 'Memory Full' error.
+  **Reasoning:** It decides whether to restart the server or clear the cache based on previous patterns.
+  **Action:** It executes the `clear_cache` command and verifies the fix.
+  
+  ### Case Study 3: The Research Journalist Agent
+  Given a topic like 'The Future of Solid State Batteries', this agent:
+  **Perception:** Scrapes Google Scholar and ArXiv for recent papers.
+  **Reasoning:** Cross-references findings to identify the top 3 breakthroughs.
+  **Action:** Compiles a 10-page report with citations and saves it to Google Drive.
+quiz:
+  - question: "What is the defining characteristic of an 'Agent'?"
+    options: ["It has a funny name", "It is autonomous and goal-oriented, rather than just instruction-following", "It is much faster than other AI", "It only works at night"]
+    correctAnswer: 1
+    explanation: "Agents are proactive. You give them a 'Finish Line' (Goal), and they figure out the 'How' (Steps) autonomously."
+  - question: "In the 'Anatomy of an Agent', what is the role of 'Reasoning'?"
+    options: ["To store data", "To process information and plan the next best action to reach the goal", "To look pretty", "To connect to the internet"]
+    correctAnswer: 1
+    explanation: "Reasoning is the agent's 'Internal Monologue' where it evaluates its situation and decides what to do next."
+  - question: "What are 'Agentic Loops'?"
+    options: ["A type of breakfast cereal", "Iterative cycles of thinking and acting where the agent checks its progress after every step", "A mistake in the code", "A type of animation"]
+    correctAnswer: 1
+    explanation: "Agents operate in loops. They Act, Observe the result, and then Think about the next action based on that observation."
+  - question: "What is a 'System Prompt' in agent engineering?"
+    options: ["A login screen", "The foundational set of rules and identity that define the agent's behavior and boundaries", "A message from the OS", "A hardware update"]
+    correctAnswer: 1
+    explanation: "The system prompt is the agent's 'Core Programming' that tells it who it is and what it can/cannot do."
+  - question: "What is 'Self-Correction' in agents?"
+    options: ["The agent deleting itself", "The ability for an agent to recognize a mistake and change its approach without human help", "A spell-checker", "A type of virus"]
+    correctAnswer: 1
+    explanation: "High-quality agents can detect errors (like a failed tool call) and try a different path to reach the goal."
+  - question: "What is 'State Management'?"
+    options: ["Politics", "Keeping track of what has already happened in a long, multi-step task", "Saving a file", "The AI's mood"]
+    correctAnswer: 1
+    explanation: "State management ensures the agent doesn't repeat the same step twice or lose track of its progress during complex missions."
+  - question: "Which model type is generally best for complex Agentic Reasoning?"
+    options: ["Small, fast models", "Large models with strong 'Chain-of-Thought' reasoning (like o1 or Sonnet 3.5)", "Models that can only see images", "Simple chatbots"]
+    correctAnswer: 1
+    explanation: "Complex agents require high-reasoning models that can follow long, multi-step logical paths without getting confused."
+  - question: "What is the 'Observation' phase?"
+    options: ["Watching a movie", "Reading the output of a tool or the result of an action to inform the next step", "The user looking at the AI", "A type of sensor"]
+    correctAnswer: 1
+    explanation: "After an agent uses a tool, it must 'Observe' the output (did it work? what did it return?) before it can continue."
+  - question: "What is 'ReAct' logic?"
+    options: ["A JavaScript framework", "A prompting technique combining Reasoning and Acting", "A chemical process", "A type of energy drink"]
+    correctAnswer: 1
+    explanation: "ReAct (Reason + Act) is a common framework where agents explicitly write out their thought process before performing an action."
+  - question: "Why is 'Context' more critical for agents than standard chat?"
+    options: ["Agents have less memory", "Agents need to remember their goal, their tools, and all previous steps to avoid getting stuck in a loop", "It isn't", "Agents use more tokens"]
+    correctAnswer: 1
+    explanation: "Without a clear memory of the 'State', an agent will wander aimlessly or repeat unsuccessful actions."
+---
+
+# Anatomy of an AI Agent
+
+An **Autonomous Agent** is more than just a chatbot. It is a system capable of perceiving its environment, reasoning about its goals, and taking actions to achieve them.
+
+## The Three Core Modules:
+
+1. **Perception (Input):** This is how the agent "sees." It includes the user's prompt, but also any data it retrieves from tools, databases, or the web.
+2. **Reasoning (The Brain):** This is the core LLM processing. It uses **Chain-of-Thought** to break down the goal into smaller, manageable sub-tasks.
+3. **Action (The Hands):** This is where the agent interacts with the world via **Tool Calling** (e.g., writing a file, sending an API request).
+
+### The Agentic Loop
+Unlike a standard chat (Prompt -> Response), an agent follows an iterative cycle:
+- **Plan:** "I need to do X to get to my goal."
+- **Act:** "Running tool Y."
+- **Observe:** "The tool returned Z. Did I reach my goal?"
+- **Refine:** "Almost. Now I need to do A."
+
+> **Engineering Tip:** The "Secret Sauce" of a great agent isn't the model—it's the **Guardrails**. You must define clear "Stop Conditions" so the agent doesn't loop infinitely if it gets stuck.

@@ -1,0 +1,78 @@
+---
+title: "Advanced Tool Calling"
+description: "Transform AI from a speaker into a doer by mastering Function Calling and Tool use."
+duration: "75 min"
+humanModeContent: "Tool calling is like giving the AI a utility belt. Instead of just talking about the weather, the AI can reach out, grab a 'Weather Tool', check the temperature, and then tell you the answer based on real data."
+examples: |
+  ### Case Study 1: The Automated Travel Agent
+  A user says 'Book me a flight to NYC next Tuesday.' 
+  **Step 1:** AI calls a `search_flights` tool to find options.
+  **Step 2:** AI presents options and asks for a choice.
+  **Step 3:** Once the user picks, the AI calls a `secure_payment` tool and a `book_ticket` tool.
+  The AI never 'guessed' the flights; it used real-world tools.
+  
+  ### Case Study 2: The Data Science Agent
+  An analyst gives the AI a CSV file. The AI doesn't just read it; it uses a **Python Code Interpreter Tool**. It writes a script to calculate the average sales, generates a chart as a PNG, and then presents that chart to the user.
+  
+  ### Case Study 3: Smart Home Orchestration
+  A user says 'I'm leaving for work.' The AI identifies three tools: `lock_front_door`, `set_thermostat_away`, and `turn_off_all_lights`. It executes all three in sequence and confirms 'Your house is secure, have a great day!'
+quiz:
+  - question: "What is 'Tool Calling' (or Function Calling)?"
+    options: ["Calling a friend", "A way for the AI to output a structured request (like JSON) to run a specific piece of code", "A type of phone call", "Using a physical hammer"]
+    correctAnswer: 1
+    explanation: "Tool calling is when the AI 'decides' it needs an external function and outputs the parameters needed to run that function."
+  - question: "Does the AI itself actually run the code in most tool calling systems?"
+    options: ["Yes, the AI is a computer", "No, the AI outputs the 'plan', and your application executes the code and sends the result back", "Only if it's on a Sunday", "Only if it's written in English"]
+    correctAnswer: 1
+    explanation: "The AI is a language model, not an execution engine. It says 'I want to run X with parameters Y', and your code does the heavy lifting."
+  - question: "What is the 'System' role in a tool calling loop?"
+    options: ["The user's boss", "The part of the conversation that provides the tool's result back to the AI", "A type of model", "The operating system"]
+    correctAnswer: 1
+    explanation: "After a tool is run, the result is sent back to the AI as a 'Tool' or 'System' message so the AI can use that data in its final answer."
+  - question: "What happens if the AI tries to call a tool with the wrong parameters?"
+    options: ["The computer explodes", "The application should catch the error and send it back to the AI so it can try again with the correct info", "The AI is deleted", "The user is charged $5"]
+    correctAnswer: 1
+    explanation: "Good tool-calling design involves 'Error Feedback Loops' where the AI can correct its own mistakes based on error messages."
+  - question: "Why use tools instead of just letting the AI 'guess'?"
+    options: ["Tools are faster", "Tools provide 'Grounded Truth' and access to real-time data that isn't in the AI's training set", "Tools make the AI look smart", "There is no reason"]
+    correctAnswer: 1
+    explanation: "Tools prevent hallucinations by giving the AI access to live, accurate data (like stock prices or weather)."
+  - question: "What is a 'JSON Schema' in the context of tool calling?"
+    options: ["A type of drawing", "A blueprint that tells the AI exactly what information a tool needs (names, types, descriptions)", "A list of users", "A type of encryption"]
+    correctAnswer: 1
+    explanation: "The schema is the 'instruction manual' for the tool. It tells the AI: 'To use this tool, I need a string called city and an integer called days'."
+  - question: "Can an AI call multiple tools at once?"
+    options: ["No, only one at a time", "Yes, modern models can output a list of multiple tool calls to be executed in parallel", "Only if the tools are the same", "Only if you ask nicely"]
+    correctAnswer: 1
+    explanation: "Parallel tool calling allows an AI to, for example, check the weather, the news, and your calendar all in a single response."
+  - question: "What is a 'Sandbox' in the context of a Code Interpreter tool?"
+    options: ["A place for children", "A secure, isolated environment where the AI can run code without risk to the rest of the system", "A type of filter", "A backup drive"]
+    correctAnswer: 1
+    explanation: "Sandboxing is critical for safety when letting an AI write and execute its own code."
+  - question: "What does 'Thinking' (or Reasoning) help with in tool use?"
+    options: ["Making the AI slower", "Helping the AI plan which tools to use and in what order to solve a multi-step problem", "Nothing", "Making the AI sound human"]
+    correctAnswer: 1
+    explanation: "Models like o1 or Claude 3.5 Sonnet use reasoning to map out complex multi-tool sequences before they start executing."
+  - question: "Which of these is a risk of un-monitored tool use?"
+    options: ["The AI becoming too happy", "The AI performing a destructive action (like deleting a database) without human approval", "The AI getting tired", "The AI running out of words"]
+    correctAnswer: 1
+    explanation: "Safety guardrails and human-in-the-loop approvals are essential when tools have 'Write' or 'Delete' permissions."
+---
+
+# Advanced Tool Calling: Giving AI Hands
+
+**Tool Calling** is the breakthrough that turned AI from a conversationalist into a collaborator. It allows the model to interact with the real world through your code.
+
+## The Tool Loop
+
+1. **The Model Decides:** The AI looks at the user request and realizes it can't answer without help (e.g., 'What is the stock price of AAPL?').
+2. **The Request:** The AI outputs a specific command (e.g., `get_stock_price(symbol="AAPL")`).
+3. **The Execution:** Your application sees this, runs the real function, and gets the price ($230.15).
+4. **The Completion:** Your app sends the price back to the AI. The AI then tells the user: 'The current price of AAPL is $230.15.'
+
+### Best Practices for Tool Design:
+- **Clear Descriptions:** The AI doesn't know what `fn_42()` does. Call it `calculate_mortgage_rate()` and give it a detailed description.
+- **Strict Schemas:** Use JSON Schema to ensure the AI provides the right data types (e.g., ensuring a ZIP code is a string, not a number).
+- **Safety First:** Always use **Read-only** tools by default. Require human approval for any "Write" actions.
+
+> **Key Takeaway:** A tool is only as good as its description. Treat your tool definitions as "High-Density Instructions" for the AI.

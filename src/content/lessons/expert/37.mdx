@@ -1,0 +1,83 @@
+---
+title: "AI Evaluation & Benchmarking (Evals)"
+description: "Learn the science of measuring AI accuracy, reliability, and regression — so you know exactly how good your AI is, and when it gets worse."
+duration: "90 min"
+humanModeContent: "How do you know if your AI is actually good? 'It feels right' is not an answer your CFO will accept. Evals are the AI equivalent of unit tests — a systematic, repeatable way to measure whether your AI is performing as expected, and to detect the moment it stops."
+examples: |
+  ### Case Study 1: The RAG Accuracy Benchmark
+  A healthcare company's AI assistant answered questions from their internal policy documents. They created a benchmark of 200 question-answer pairs (verified by medical staff) and ran the AI against it weekly. When a vector database migration caused accuracy to drop from 94% to 78%, the eval caught it within 48 hours — before any clinical staff were affected.
+
+  ### Case Study 2: The Regression Test Suite
+  A legal AI firm ran evals every time they updated their prompts. One update improved response quality on complex contract analysis but degraded performance on simple clause extraction. The eval suite caught this regression immediately. Without evals, the degradation would have been discovered only when a client reported an error.
+
+  ### Case Study 3: The A/B Prompt Eval
+  A customer service team had two prompt strategies for handling refund requests. Instead of arguing about which was better, they ran both against 500 historical conversations with known outcomes. Prompt B had a 12% higher successful resolution rate. Data ended the debate in 2 hours.
+quiz:
+  - question: "What is an 'eval' in the context of AI systems?"
+    options: ["An evaluation of an employee's performance", "A systematic test suite that measures AI output quality against known-good examples, used to detect regression and compare versions", "An evaluation of AI hardware performance", "A customer survey about AI"]
+    answer: 1
+    explanation: "Evals are the AI equivalent of unit tests — automated checks that tell you whether your AI's outputs meet quality standards, and alert you when a change causes regression."
+  - question: "What is 'AI regression' and why is it dangerous in production?"
+    options: ["When AI technology goes backwards in history", "When a change to a prompt, model, or data causes a previously working AI to perform worse on key metrics", "When AI makes users regress to old habits", "A statistical technique for predicting AI costs"]
+    answer: 1
+    explanation: "AI regression is the AI equivalent of a bug introduced by a code change. Without evals, regressions go undetected until they cause real user impact or business errors."
+  - question: "What is a 'golden dataset' in AI evaluation?"
+    options: ["The most expensive dataset you can buy", "A curated set of input-output pairs verified by domain experts, used as the ground truth for measuring AI accuracy", "Data stored in gold-plated servers", "The first dataset used to train an AI"]
+    answer: 1
+    explanation: "A golden dataset is your truth benchmark. Every input has a verified correct output. Your AI's score against this dataset is your most reliable quality metric."
+  - question: "What is 'LLM-as-judge' evaluation and when is it useful?"
+    options: ["Using an LLM to judge human performance", "Using a powerful AI model to evaluate the quality of outputs from another AI model — useful when human review at scale is impractical", "Letting the AI judge its own outputs only", "A legal process for AI liability"]
+    answer: 1
+    explanation: "LLM-as-judge uses a capable model (like GPT-4) to score outputs on criteria like helpfulness, accuracy, and tone — enabling quality evaluation at scale without human reviewers for every response."
+  - question: "What should trigger a new eval run in your CI/CD pipeline?"
+    options: ["Only when the CEO requests it", "Every prompt change, model version update, or data schema change — automatically, before promotion to production", "Once per quarter during planning", "Only when users report problems"]
+    answer: 1
+    explanation: "Evals should run automatically on every change that could affect output quality — just like unit tests run on every code commit. This catches regressions before they reach users."
+---
+
+## The Four Types of AI Evals
+
+### 1. Correctness Evals
+**Question:** Is the answer factually right?
+- Compare AI output to verified ground truth answers
+- Use exact match, semantic similarity, or expert review scoring
+- Best for: RAG systems, Q&A bots, data extraction
+
+### 2. Quality Evals
+**Question:** Is the answer good, even if there's no single "right" answer?
+- Score on dimensions: helpfulness, tone, completeness, safety
+- Use LLM-as-judge or human evaluators on a sample
+- Best for: Customer service agents, content generation, complex reasoning
+
+### 3. Regression Evals
+**Question:** Did anything break?
+- Run on every model/prompt/data change
+- Alert if scores drop below threshold vs. baseline
+- Best for: Any production AI system with established baselines
+
+### 4. A/B Comparison Evals
+**Question:** Which version is better?
+- Run two versions against the same test set
+- Statistical significance testing on results
+- Best for: Prompt optimization, model selection, feature experiments
+
+## Building Your Eval Pipeline
+
+```
+1. Create golden dataset (100-500 verified examples)
+2. Define scoring rubrics (exact match, LLM-judge, human review)
+3. Set baseline scores for current production version
+4. Automate eval runs on every change (CI/CD integration)
+5. Set alerting thresholds (e.g., alert if accuracy drops >5%)
+6. Review eval results before every production promotion
+```
+
+## Eval Tools
+
+| Tool | Best For |
+|------|----------|
+| **Braintrust** | Full eval platform with LLM-as-judge |
+| **Promptfoo** | Open-source prompt regression testing |
+| **LangSmith** | LangChain-native eval and tracing |
+| **Ragas** | RAG-specific evaluation metrics |
+| **Custom scripts** | Simple exact-match correctness evals |

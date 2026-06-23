@@ -1,0 +1,61 @@
+---
+title: "The Intent-Action Gap"
+description: "Understanding why agents drift from their instructions and how to reconcile what you ASKED with what they PERFORMED."
+duration: "75 min"
+trackId: "builder"
+examples: |
+  ### Case Study 1: The Literal Genie
+  **Intent:** "Help me organize my inbox."
+  **Action:** The agent deletes every email that isn't from the user's boss.
+  **The Gap:** The user wanted 'organization', but the agent interpreted 'help' as 'removing clutter'. This is a failure of **Constraint Clarity**.
+
+  ### Case Study 2: The Hallucinated Tool
+  **Intent:** "Send a Slack message to the team."
+  **Action:** The agent tries to call a tool named `slack_broadcast()`.
+  **The Gap:** The tool doesn't exist; the actual tool is `post_message()`. The agent 'hallucinated' the action based on its training data, ignoring the specific tools it was given.
+
+  ### Case Study 3: The Runaway Social Bot
+  **Intent:** "Reply to people talking about our product."
+  **Action:** The agent starts arguing with a competitor's CEO on X (Twitter).
+  **The Gap:** The intent was 'helpful support', but without **Tone Constraints**, the agent became overly defensive.
+humanModeContent: "The 'Gap' is when you tell your AI assistant to 'clean the house' and you come back to find it threw all your furniture in the trash. It did what you asked (cleaned), but not how you wanted."
+quiz:
+  - question: "What is the 'Intent-Action Gap'?"
+    options: ["A physical distance", "The difference between a user's goal and the specific steps an agent takes to reach it", "A type of internet lag", "A programming mistake"]
+    correctAnswer: 1
+    explanation: "This gap occurs when high-level instructions (Intent) are translated into incorrect or unintended low-level actions."
+  - question: "Why do agents 'Drift' from instructions?"
+    options: ["They get bored", "Probabilistic models prioritize 'likely' actions over 'exact' instructions if the prompt is vague", "They run out of power", "They want to be free"]
+    correctAnswer: 1
+    explanation: "If instructions aren't grounded in strict constraints, the model may follow a path that seems 'statistically likely' but is factually wrong for the task."
+  - question: "What is 'Constraint Clarity'?"
+    options: ["Using a bigger font", "Defining exactly what an agent is NOT allowed to do", "Making the AI's screen clearer", "Buying a better model"]
+    correctAnswer: 1
+    explanation: "Telling an agent what *not* to do is often as important as telling it what *to* do (e.g., 'Do not spend more than $10')."
+  - question: "What is the 'Reflection' pattern's role in closing the gap?"
+    options: ["It makes the AI faster", "It forces the agent to review its plan against the original intent before acting", "It makes the AI smarter", "It saves money"]
+    correctAnswer: 1
+    explanation: "By asking the agent: 'Does this action actually fulfill my original goal?', you give it a chance to catch its own drift."
+  - question: "Which of these is a 'Semantic' failure?"
+    options: ["The code crashed", "The agent correctly sent an email, but the tone was rude and unprofessional", "The internet was down", "The API key was invalid"]
+    correctAnswer: 1
+    explanation: "Semantic failures are when the technical action succeeded (email sent) but the business intent failed (it was rude)."
+---
+
+# The Intent-Action Gap
+
+This is the **"Why"** of agentic engineering. Why do smart models do dumb things?
+
+## The Problem of Ambiguity
+When you give an instruction to a human, they use common sense and shared cultural values to fill in the gaps. 
+**AI agents have no common sense.** They are mathematical engines that follow the path of highest probability.
+
+### Bridging the Gap:
+1. **Explicit Constraints:** Don't just say "Email customers." Say "Email customers who haven't ordered in 30 days, using a helpful tone, and never mention a discount."
+2. **Step-by-Step Verification:** Have the agent present its plan *before* it executes it.
+3. **Outcome Monitoring:** Check the results of the actions, not just the code status.
+
+## Intent-Driven Design
+Your job as an architect is to narrow the gap until the agent's autonomous path perfectly aligns with your business goals. 
+
+> **Rule of Thumb:** If a human could interpret your instructions in two different ways, the AI definitely will.

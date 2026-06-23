@@ -1,0 +1,51 @@
+---
+title: "MCP Explained"
+description: "Understanding the Model Context Protocol and how it bridges the gap between AI and local data."
+duration: "45 min"
+trackId: "intermediate"
+examples: |
+  ### Case Study 1: The Local Developer
+  A developer uses Claude Desktop to write code. By installing an MCP Server for 'Local FileSystem', Claude can now see the developer's local files, read the project structure, and suggest edits directly—without the developer having to copy-paste code into the chatbox.
+
+  ### Case Study 2: The Enterprise Database Bridge
+  A company has a secure internal SQL database. Instead of building a complex web app, they deploy an MCP Server inside their private network. Their internal AI assistant uses the MCP client to query sales data securely, ensuring the data never leaves the corporate firewall.
+
+  ### Case Study 3: The Multi-Model Analyst
+  An analyst uses three different AI models (GPT-4o, Claude 3.5, and Gemini). Because they use an MCP Server to handle their financial data, they can switch between all three models instantly. The tools and data connections remain the same because they are standardized via the protocol.
+humanModeContent: "MCP is like a universal translator for AI. It allows the model to talk to your files, your databases, and your local tools without you having to build a custom connection for every single one."
+quiz:
+  - question: "What is the primary role of the Model Context Protocol (MCP)?"
+    options: ["To make AI faster", "To provide a standard bridge between LLMs and external data/tools", "To replace Python", "To encrypt user passwords"]
+    correctAnswer: 1
+    explanation: "MCP provides a standardized way for AI models to discover and interact with data and tools in a local or remote environment."
+  - question: "Which component in the MCP architecture 'hosts' the tools and data?"
+    options: ["The MCP Client", "The MCP Server", "The LLM", "The User Interface"]
+    correctAnswer: 1
+  - question: "What is the 'Handshake' in MCP?"
+    options: ["The AI's opening greeting", "The discovery phase where the client learns what tools the server offers", "A physical handshake between servers", "When the AI finishes a task"]
+    correctAnswer: 1
+    explanation: "During the handshake, the MCP server describes its available tools, resources, and prompts to the AI client."
+  - question: "Why is MCP better than custom integrations for every AI model?"
+    options: ["It is cheaper", "It is a universal standard that works across different models and tools", "It is faster to type", "It only works with Claude"]
+    correctAnswer: 1
+    explanation: "MCP allows developers to build a tool once and have it work with any AI client that supports the protocol."
+  - question: "What is an example of an MCP 'Resource'?"
+    options: ["The AI's CPU", "A specific file or database entry exposed by the server", "The user's keyboard", "A new computer"]
+    correctAnswer: 1
+    explanation: "Resources are the data sources (files, logs, DB entries) that the MCP server makes available for the AI to read."
+---
+
+# MCP Explained
+
+The **Model Context Protocol (MCP)** is an open standard that enables developers to build secure, two-way integrations between AI models and their local data.
+
+## Why MCP?
+Before MCP, if you wanted an AI to read your files, you had to write custom code for that specific AI. If you switched models, you had to start over. MCP standardizes this.
+
+### The Architecture:
+1. **The Server:** Connects to your data (e.g., Google Drive, GitHub, SQL).
+2. **The Client:** The AI model (e.g., Claude Desktop, your custom app).
+3. **The Protocol:** A JSON-RPC based bridge that handles discovery and execution.
+
+## Seeing the Bridge
+In our sandbox, you witnessed the "Handshake." This is where the AI asks the MCP Server: *"What can you do?"* and the server responds with a list of available tools. This discovery layer is what makes AI automation truly flexible.

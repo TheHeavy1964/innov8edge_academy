@@ -1,0 +1,61 @@
+---
+title: "The AI Lifecycle: From Pilot to Production"
+description: "Master the 'When' of professional AI deployment — moving from local demos to stable, team-wide production tools without breaking everything."
+duration: "45 min"
+humanModeContent: "Most AI projects die in the 'pilot purgatory' — they work great on your laptop but never make it to the team. The AI Lifecycle is the roadmap from 'cool demo' to 'critical business tool,' covering version control, staging environments, and the moments when you should — and shouldn't — hit the big green 'Deploy' button."
+examples: |
+  ### Case Study 1: The Prompt Version Disaster
+  A marketing team's AI copywriter was performing brilliantly. Then OpenAI updated GPT-4 and the outputs suddenly changed tone. The team had no version control on their prompts — they had no idea what changed or how to roll back. They lost 3 weeks re-tuning. A proper prompt registry with semantic versioning would have reduced this to a 30-minute rollback.
+
+  ### Case Study 2: The Staging Environment That Saved the Launch
+  A fintech company built an AI document classifier for loan applications. Before going live, they ran 6 weeks in a staging environment with real (anonymized) data. They discovered the model had a 12% error rate on handwritten applications — which their production dataset contained. They fixed it before a single customer was affected.
+
+  ### Case Study 3: The Phased Rollout
+  A customer service team didn't switch 100% of tickets to AI at once. They started with 10% of low-stakes inquiries, monitored for 2 weeks, expanded to 40%, monitored, then went to 100%. At each phase, issues were caught and fixed with minimal customer impact. Full deployment took 6 weeks instead of 1, but zero production incidents occurred.
+quiz:
+  - question: "What is 'prompt version control' and why does it matter?"
+    options: ["Controlling how fast prompts load", "Tracking and managing changes to AI prompts so you can roll back to a previous version when an update causes regressions", "Limiting how many prompts you write", "Encrypting your prompts for security"]
+    answer: 1
+    explanation: "As AI models update and prompts evolve, version control ensures you can always trace what changed, when, and roll back to a known-good state — critical for production stability."
+  - question: "What is a 'staging environment' in AI deployment?"
+    options: ["A theater stage for AI demos", "An isolated environment that mirrors production, used to test AI changes with real data before deploying to live users", "The first version of your AI agent", "A cloud storage location"]
+    answer: 1
+    explanation: "A staging environment catches issues — model drift, edge cases, integration failures — before they affect real users. It is the safety net between development and production."
+  - question: "What is 'model drift' and why is it a production risk?"
+    options: ["When your AI model moves servers", "The gradual degradation of an AI model's performance over time as the real-world data it encounters diverges from its training data", "When developers drift between projects", "A type of network latency"]
+    answer: 1
+    explanation: "Models trained on historical data perform well initially but degrade as the world changes. Without monitoring, drift goes undetected until performance has significantly degraded."
+  - question: "What is a 'canary deployment' in AI operations?"
+    options: ["Using a canary bird as a test subject", "Releasing a new AI version to a small percentage of users first, monitoring closely, before expanding to 100%", "Testing AI on a canary island server", "A specific type of AI model architecture"]
+    answer: 1
+    explanation: "Canary deployments limit blast radius. By routing only 5-10% of traffic to the new version first, you catch critical issues before they affect all users."
+  - question: "What should trigger a rollback in a production AI system?"
+    options: ["Any single user complaint", "A statistically significant drop in key performance metrics (accuracy, satisfaction score, error rate) beyond a pre-defined threshold", "The AI answering slowly once", "A developer preference for the old version"]
+    answer: 1
+    explanation: "Rollback decisions should be data-driven, based on clear thresholds established before deployment — not reactive to individual incidents or preferences."
+---
+
+## The AI Lifecycle: Four Phases of Maturity
+
+### Phase 1: Pilot (Local / Sandbox)
+The AI works in isolation. You validate the concept with synthetic or anonymized data. Success metric: "Does this work at all?"
+
+### Phase 2: Staging (Pre-Production)
+The AI connects to real data in an isolated environment. You validate integration, edge cases, and performance. Success metric: "Does this work reliably with real data?"
+
+### Phase 3: Limited Production (Canary)
+The AI handles a controlled percentage of real traffic. Human oversight is high. Success metric: "Does this work for real users without incidents?"
+
+### Phase 4: Full Production
+The AI operates at scale with automated monitoring, alerting, and rollback capabilities. Success metric: "Does this deliver consistent ROI with minimal human intervention?"
+
+## The AI Deployment Checklist
+
+Before promoting any AI system to production:
+- [ ] Prompt versions are tracked in a registry
+- [ ] Staging environment tested with production-representative data
+- [ ] Rollback procedure documented and tested
+- [ ] Monitoring dashboards live with alerting thresholds set
+- [ ] Incident response runbook written
+- [ ] Legal/compliance review completed
+- [ ] Human escalation path defined for edge cases

@@ -1,0 +1,43 @@
+---
+title: "Security & Privacy"
+description: "Protecting business data and understanding how to safely deploy AI in a corporate environment."
+duration: "20 min"
+trackId: "beginner"
+examples: "### Case Study: The Public AI Leak\nAn engineer at a major electronics company pasted proprietary source code into a public AI to fix a bug. Months later, a competitor used the same AI and asked a related coding question. The AI, having 'learned' from the engineer's input, suggested a solution that revealed the first company's secret internal logic. This is why **private enterprise instances** are mandatory for business data."
+humanModeContent: "Using AI is like talking to a very helpful stranger. You shouldn't tell them your passwords or your company's secret bank details. We learn how to use these tools with a 'privacy-first' mindset."
+quiz:
+  - question: "What is 'Data Leakage' in the context of AI?"
+    options: ["When a computer breaks", "When sensitive info in a prompt becomes part of the model's training", "When the internet is slow", "When you delete a file"]
+    correctAnswer: 1
+    explanation: "Data leakage happens when private or sensitive information entered into a public AI model is stored and potentially used to train future versions of that model."
+  - question: "Which is a 'Safe' way to use corporate AI?"
+    options: ["Using private enterprise instances", "Sharing passwords with the bot", "Pasting client contracts into public ChatGPT", "Asking AI to guess your bank PIN"]
+    correctAnswer: 0
+  - question: "Why should you avoid pasting customer names into a public AI?"
+    options: ["It makes the AI slower", "It violates privacy laws (like GDPR) and risks data leakage", "The AI won't understand names", "It costs more money"]
+    correctAnswer: 1
+    explanation: "Protecting PII (Personally Identifiable Information) is a legal and ethical requirement in almost every industry."
+  - question: "What is an 'Opt-out of Training' clause?"
+    options: ["A way to stop using AI", "A setting that prevents an AI provider from using your data to improve their future models", "A type of insurance", "A cancellation policy"]
+    correctAnswer: 1
+    explanation: "Enterprise-grade AI contracts usually include an opt-out to ensure your proprietary business data stays private."
+  - question: "What is the 'Human Firewall' in AI security?"
+    options: ["A special type of hardware", "The practice of humans verifying and controlling what data is shared with an AI", "A group of hackers", "A firewall that only humans can use"]
+    correctAnswer: 1
+    explanation: "Security is a human habit. No matter how safe the software is, the user must choose not to share sensitive secrets."
+---
+
+# Security & Privacy
+
+In the age of AI, **Data is the New Perimeter**. Protecting your business requires a shift in how you think about "The Prompt."
+
+## The Public vs. Private Trap
+Most free AI tools use your inputs to train their future models. If you paste a secret project plan into a public AI, you are essentially "leaking" that plan to the model's developers and, eventually, its other users.
+
+### Security Best Practices:
+1. **Anonymize Data:** Never include names, emails, or financial IDs in a prompt.
+2. **Enterprise Silos:** Always use corporate-grade AI accounts that offer "Opt-out of training" clauses.
+3. **API First:** Accessing AI via API (like we do in the Academy) is generally more secure as providers have stricter privacy agreements for developers.
+
+## The Human Firewall
+Technology can only protect so much. Security in AI starts with the user—understanding that every word you type into a chatbox is potentially being recorded. Treat AI as a public forum unless you are 100% sure you are in a private enterprise environment.

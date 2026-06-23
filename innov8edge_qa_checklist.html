@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Innov8Edge Academy — QA Testing Checklist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy: #0F1B35;
+  --navy-mid: #162447;
+  --navy-light: #1E3A5F;
+  --teal: #00C2CB;
+  --teal-dim: #007B82;
+  --teal-glow: rgba(0,194,203,0.15);
+  --teal-ultra: rgba(0,194,203,0.06);
+  --white: #FFFFFF;
+  --off-white: #F0F4F8;
+  --text-primary: #0F1B35;
+  --text-secondary: #4A5568;
+  --text-muted: #8898AA;
+  --border: rgba(15,27,53,0.1);
+  --border-strong: rgba(15,27,53,0.18);
+  --pass-bg: #E6FBF3; --pass-border: #34D399; --pass-text: #065F46;
+  --fail-bg: #FEE8E8; --fail-border: #F87171; --fail-text: #991B1B;
+  --na-bg: #F1F5F9; --na-border: #94A3B8; --na-text: #475569;
+  --radius: 10px; --radius-lg: 16px; --radius-xl: 24px;
+  --shadow-sm: 0 1px 3px rgba(15,27,53,0.08), 0 1px 2px rgba(15,27,53,0.04);
+  --shadow: 0 4px 16px rgba(15,27,53,0.1), 0 1px 4px rgba(15,27,53,0.06);
+  --shadow-lg: 0 12px 40px rgba(15,27,53,0.14), 0 4px 12px rgba(15,27,53,0.08);
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--off-white);
+  color: var(--text-primary);
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+/* ── TOP NAV ─────────────────────────────────────────────────────────────── */
+.topnav {
+  background: var(--navy);
+  padding: 0 2rem;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 56px; position: sticky; top: 0; z-index: 100;
+  border-bottom: 1px solid rgba(0,194,203,0.2);
+}
+.topnav-logo {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800; font-size: 17px; color: var(--white);
+  display: flex; align-items: center; gap: 8px; text-decoration: none;
+}
+.topnav-logo span { color: var(--teal); }
+.topnav-tag {
+  font-size: 11px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--teal); background: var(--teal-glow); border: 1px solid rgba(0,194,203,0.3);
+  padding: 3px 10px; border-radius: 20px;
+}
+.topnav-right { display: flex; align-items: center; gap: 12px; }
+.nav-btn {
+  padding: 6px 14px; border-radius: 8px; font-size: 13px; font-weight: 500;
+  cursor: pointer; font-family: 'DM Sans', sans-serif;
+  transition: all .15s;
+}
+.nav-btn-ghost { background: none; border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.8); }
+.nav-btn-ghost:hover { border-color: var(--teal); color: var(--teal); }
+.nav-btn-primary { background: var(--teal); border: 1px solid var(--teal); color: var(--navy); font-weight: 600; }
+.nav-btn-primary:hover { background: #00D8E0; }
+
+/* ── HERO HEADER ─────────────────────────────────────────────────────────── */
+.hero {
+  background: var(--navy);
+  padding: 3rem 2rem 0;
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 70% 60% at 90% 10%, rgba(0,194,203,0.12) 0%, transparent 60%),
+              radial-gradient(ellipse 50% 80% at 5% 80%, rgba(0,100,130,0.15) 0%, transparent 60%);
+  pointer-events: none;
+}
+.hero-inner {
+  max-width: 1040px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: end;
+}
+.hero-eyebrow {
+  display: flex; align-items: center; gap: 10px; margin-bottom: 1rem;
+}
+.hero-pill {
+  font-family: 'Syne', sans-serif; font-size: 10px; font-weight: 700;
+  letter-spacing: .12em; text-transform: uppercase;
+  background: var(--teal-glow); color: var(--teal);
+  border: 1px solid rgba(0,194,203,0.35); padding: 4px 12px; border-radius: 20px;
+}
+.hero-divider { height: 1px; flex: 1; background: linear-gradient(90deg, rgba(0,194,203,0.4), transparent); }
+.hero h1 {
+  font-family: 'Syne', sans-serif; font-weight: 800;
+  font-size: clamp(28px, 4vw, 44px); color: var(--white); line-height: 1.15;
+  margin-bottom: .5rem;
+}
+.hero h1 em { color: var(--teal); font-style: normal; }
+.hero-sub { font-size: 15px; color: rgba(255,255,255,0.55); margin-bottom: 2rem; }
+
+.hero-meta {
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  padding: 1.25rem 1.5rem; align-self: end;
+  min-width: 260px;
+}
+.meta-title {
+  font-size: 10px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--teal); margin-bottom: .75rem;
+}
+.meta-field { margin-bottom: .6rem; }
+.meta-field label { display: block; font-size: 11px; color: rgba(255,255,255,0.4); margin-bottom: 3px; }
+.meta-field input, .meta-field select {
+  width: 100%; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 7px; padding: 7px 11px; font-size: 13px; color: var(--white);
+  font-family: 'DM Sans', sans-serif; outline: none; transition: border-color .15s;
+}
+.meta-field input:focus, .meta-field select:focus { border-color: var(--teal); }
+.meta-field input::placeholder { color: rgba(255,255,255,0.25); }
+.meta-field select option { background: var(--navy-mid); }
+
+/* ── PROGRESS STRIP ──────────────────────────────────────────────────────── */
+.progress-strip {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  padding: .85rem 2rem;
+  position: sticky; top: 56px; z-index: 90;
+}
+.progress-inner {
+  max-width: 1040px; margin: 0 auto;
+  display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;
+}
+.stat-group { display: flex; gap: 1.25rem; }
+.stat { display: flex; align-items: center; gap: 6px; }
+.stat-dot { width: 8px; height: 8px; border-radius: 50%; }
+.stat-dot.pass { background: #10B981; }
+.stat-dot.fail { background: #EF4444; }
+.stat-dot.na { background: #94A3B8; }
+.stat-dot.pend { background: #D1D5DB; }
+.stat-val { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 15px; }
+.stat-lbl { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: .05em; }
+.bar-wrap { flex: 1; min-width: 160px; }
+.bar-bg { background: #E2E8F0; border-radius: 4px; height: 6px; overflow: hidden; }
+.bar-fill { height: 100%; background: linear-gradient(90deg, #0d9488, #10b981); border-radius: 4px; transition: width .4s cubic-bezier(.4,0,.2,1); }
+.bar-pct { font-size: 12px; color: var(--text-muted); margin-top: 3px; text-align: right; }
+
+/* ── MAIN LAYOUT ─────────────────────────────────────────────────────────── */
+.main { max-width: 1040px; margin: 0 auto; padding: 1.5rem 2rem 4rem; }
+
+/* ── SECTION CARD ────────────────────────────────────────────────────────── */
+.section-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  margin-bottom: 1rem;
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition: box-shadow .2s;
+}
+.section-card:focus-within { box-shadow: var(--shadow); }
+
+.section-head {
+  display: flex; align-items: center; gap: 14px;
+  padding: 1rem 1.25rem; cursor: pointer; user-select: none;
+  transition: background .15s;
+}
+.section-head:hover { background: #FAFBFC; }
+.sec-num {
+  font-family: 'Syne', sans-serif; font-weight: 800; font-size: 11px;
+  letter-spacing: .08em; text-transform: uppercase;
+  background: var(--navy); color: var(--teal);
+  width: 32px; height: 32px; border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.sec-title {
+  font-family: 'Syne', sans-serif; font-weight: 700; font-size: 15px; color: var(--navy);
+  flex: 1;
+}
+.sec-progress { font-size: 12px; color: var(--text-muted); white-space: nowrap; }
+.sec-chevron {
+  width: 20px; height: 20px; display: flex; align-items: center; justify-content: center;
+  color: var(--text-muted); transition: transform .2s;
+}
+.sec-chevron svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 2; }
+.sec-chevron.open { transform: rotate(180deg); }
+
+.section-body { display: none; border-top: 1px solid var(--border); }
+.section-body.open { display: block; }
+.section-intro {
+  padding: .85rem 1.25rem .5rem;
+  font-size: 13px; color: var(--text-secondary); font-style: italic;
+  border-bottom: 1px dashed var(--border);
+}
+
+/* ── TABLE ───────────────────────────────────────────────────────────────── */
+.check-table { width: 100%; border-collapse: collapse; }
+.check-table thead th {
+  font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .07em;
+  color: var(--text-muted); background: #F8FAFC;
+  padding: 8px 12px; border-bottom: 1px solid var(--border);
+  text-align: left;
+}
+.check-table thead th.center { text-align: center; }
+.check-table tbody tr { transition: background .1s; }
+.check-table tbody tr:hover td { background: #FAFBFF; }
+.check-table tbody tr.row-p td { background: #F0FDF9; }
+.check-table tbody tr.row-p td:first-child { border-left: 3px solid #10B981; padding-left: 9px; }
+.check-table tbody tr.row-f td { background: #FFF5F5; }
+.check-table tbody tr.row-f td:first-child { border-left: 3px solid #EF4444; padding-left: 9px; }
+.check-table tbody tr.row-n td { background: #F8FAFC; }
+.check-table tbody tr.row-n td:first-child { border-left: 3px solid #94A3B8; padding-left: 9px; }
+.check-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+.check-table tr:last-child td { border-bottom: none; }
+.check-table td.center { text-align: center; width: 56px; }
+
+.item-label { font-size: 13px; font-weight: 500; color: var(--navy); display: block; }
+.item-sub { font-size: 12px; color: var(--text-secondary); margin-top: 2px; display: block; line-height: 1.5; }
+.item-url { font-size: 11px; margin-top: 3px; display: block; }
+.item-url a { color: #0284C7; text-decoration: none; }
+.item-url a:hover { text-decoration: underline; }
+
+.toggle-btn {
+  width: 38px; height: 30px; border-radius: 7px;
+  border: 1px solid var(--border-strong);
+  background: var(--white); cursor: pointer;
+  font-family: 'Syne', sans-serif; font-size: 11px; font-weight: 700;
+  color: var(--text-muted); transition: all .14s; letter-spacing: .03em;
+}
+.toggle-btn:hover { border-color: var(--navy); color: var(--navy); background: #F8FAFC; }
+.toggle-btn.on-p { background: var(--pass-bg); border-color: var(--pass-border); color: var(--pass-text); }
+.toggle-btn.on-f { background: var(--fail-bg); border-color: var(--fail-border); color: var(--fail-text); }
+.toggle-btn.on-n { background: var(--na-bg); border-color: var(--na-border); color: var(--na-text); }
+
+.note-inp {
+  width: 100%; min-width: 110px; font-size: 12px; font-family: 'DM Sans', sans-serif;
+  padding: 5px 8px; border: 1px solid var(--border); border-radius: 6px;
+  background: #F8FAFC; color: var(--text-primary); resize: none; height: 30px;
+  overflow: hidden; transition: border-color .15s, height .1s;
+}
+.note-inp:focus { outline: none; border-color: var(--teal); background: var(--white); }
+
+.sub-label {
+  font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em;
+  color: var(--text-muted); padding: 10px 12px 6px;
+  border-bottom: 1px solid var(--border);
+  background: #FAFBFC;
+}
+
+/* ── BUG SECTION ─────────────────────────────────────────────────────────── */
+.bug-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden; margin-bottom: 1rem;
+}
+.bug-head {
+  background: var(--navy);
+  display: flex; align-items: center; gap: 12px;
+  padding: 1rem 1.25rem; cursor: pointer; user-select: none;
+}
+.bug-icon {
+  width: 32px; height: 32px; border-radius: 8px;
+  background: rgba(239,68,68,0.2); border: 1px solid rgba(239,68,68,0.4);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 15px; flex-shrink: 0;
+}
+.bug-head-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 15px; color: var(--white); flex: 1; }
+.bug-count-badge {
+  background: #EF4444; color: var(--white);
+  font-family: 'Syne', sans-serif; font-weight: 700; font-size: 11px;
+  padding: 2px 9px; border-radius: 20px; min-width: 22px; text-align: center;
+}
+.bug-body { display: none; padding: 1rem; border-top: 1px solid rgba(0,194,203,0.15); }
+.bug-body.open { display: block; }
+
+.bug-item {
+  background: #FAFBFC; border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 1rem;
+  margin-bottom: .75rem; position: relative;
+  animation: slideIn .2s ease;
+}
+@keyframes slideIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+.bug-item-num {
+  font-family: 'Syne', sans-serif; font-weight: 800; font-size: 11px;
+  color: var(--text-muted); letter-spacing: .06em; text-transform: uppercase;
+  margin-bottom: .6rem;
+}
+.bug-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.bug-full { grid-column: 1 / -1; }
+.bug-field label { display: block; font-size: 11px; color: var(--text-muted); font-weight: 500; margin-bottom: 3px; text-transform: uppercase; letter-spacing: .05em; }
+.bug-field input, .bug-field select, .bug-field textarea {
+  width: 100%; font-size: 13px; font-family: 'DM Sans', sans-serif;
+  padding: 6px 10px; border: 1px solid var(--border-strong);
+  border-radius: 7px; background: var(--white); color: var(--text-primary);
+  transition: border-color .15s; outline: none;
+}
+.bug-field textarea { resize: vertical; min-height: 64px; line-height: 1.5; }
+.bug-field input:focus, .bug-field select:focus, .bug-field textarea:focus { border-color: var(--teal); }
+.bug-remove-btn {
+  position: absolute; top: 1rem; right: 1rem;
+  background: none; border: none; cursor: pointer; font-size: 18px;
+  color: var(--text-muted); padding: 2px; line-height: 1;
+  transition: color .15s;
+}
+.bug-remove-btn:hover { color: #EF4444; }
+
+.sev-select option[value="Critical"] { color: #DC2626; }
+.sev-select option[value="High"] { color: #EA580C; }
+.sev-select option[value="Medium"] { color: #D97706; }
+.sev-select option[value="Low"] { color: #65A30D; }
+
+.add-bug {
+  width: 100%; padding: 10px; border-radius: var(--radius);
+  border: 1.5px dashed var(--border-strong); background: none; cursor: pointer;
+  font-size: 13px; font-family: 'DM Sans', sans-serif; color: var(--text-secondary);
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+  margin-bottom: 1rem; transition: all .15s;
+}
+.add-bug:hover { background: var(--teal-ultra); border-color: var(--teal); color: var(--navy); }
+
+/* ── ACTION BAR ──────────────────────────────────────────────────────────── */
+.action-bar {
+  display: flex; gap: 8px; flex-wrap: wrap;
+  padding-top: 1rem; border-top: 1px solid var(--border);
+}
+.btn {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 9px 18px; border-radius: 9px; font-size: 13px; font-weight: 500;
+  cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all .15s;
+  text-decoration: none;
+}
+.btn-navy { background: var(--navy); color: var(--white); border: none; }
+.btn-navy:hover { background: var(--navy-light); }
+.btn-teal { background: var(--teal); color: var(--navy); border: none; font-weight: 700; }
+.btn-teal:hover { background: #00D8E0; }
+.btn-outline { background: none; color: var(--text-primary); border: 1px solid var(--border-strong); }
+.btn-outline:hover { background: #F8FAFC; border-color: var(--navy); }
+.btn-danger { background: none; color: #DC2626; border: 1px solid #FECACA; }
+.btn-danger:hover { background: var(--fail-bg); }
+.export-note { font-size: 11px; color: var(--text-muted); font-style: italic; margin-top: 8px; }
+
+/* ── SIGN OFF ────────────────────────────────────────────────────────────── */
+.signoff-card {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: var(--radius-xl); box-shadow: var(--shadow-sm);
+  padding: 1.5rem; margin-bottom: 1rem;
+}
+.signoff-title {
+  font-family: 'Syne', sans-serif; font-weight: 700; font-size: 13px;
+  text-transform: uppercase; letter-spacing: .08em; color: var(--navy);
+  margin-bottom: 1rem; padding-bottom: .75rem;
+  border-bottom: 1px solid var(--border);
+}
+.signoff-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+.signoff-block label { display: block; font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: .07em; font-weight: 600; margin-bottom: 4px; }
+.sig-line {
+  border-bottom: 1.5px solid var(--border-strong);
+  height: 36px; margin-bottom: 4px;
+}
+.sig-date-input {
+  font-size: 12px; font-family: 'DM Sans', sans-serif;
+  color: var(--text-muted); background: none; border: none; outline: none;
+  padding: 2px 0;
+}
+
+/* ── FOOTER ──────────────────────────────────────────────────────────────── */
+.footer {
+  background: var(--navy); padding: 1.25rem 2rem;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 8px;
+}
+.footer-brand {
+  font-family: 'Syne', sans-serif; font-weight: 800; font-size: 14px;
+  color: rgba(255,255,255,0.5); display: flex; align-items: center; gap: 6px;
+}
+.footer-brand span { color: var(--teal); }
+.footer-copy { font-size: 11px; color: rgba(255,255,255,0.3); }
+
+/* ── RESPONSIVE ──────────────────────────────────────────────────────────── */
+@media (max-width: 700px) {
+  .hero-inner { grid-template-columns: 1fr; }
+  .hero-meta { border-radius: var(--radius-lg); margin-top: .5rem; }
+  .signoff-grid { grid-template-columns: 1fr; }
+  .bug-grid { grid-template-columns: 1fr; }
+  .check-table .note-col { display: none; }
+  .topnav-tag { display: none; }
+  .main { padding: 1rem 1rem 3rem; }
+}
+@media print {
+  .topnav, .progress-strip { position: static; }
+  .section-body { display: block !important; }
+  .bug-body { display: block !important; }
+  .action-bar { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOP NAV -->
+<nav class="topnav">
+  <a class="topnav-logo" href="#">Innov8<span>Edge</span></a>
+  <span class="topnav-tag">Academy QA</span>
+  <div class="topnav-right">
+    <button class="nav-btn nav-btn-ghost" onclick="window.print()">Print</button>
+    <button class="nav-btn nav-btn-primary" onclick="exportReport()">Export Report</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow">
+        <span class="hero-pill">DevOps · Intern Edition</span>
+        <span class="hero-divider"></span>
+      </div>
+      <h1>Academy <em>QA Testing</em><br>Checklist</h1>
+      <p class="hero-sub">Mark each item Pass · Fail · N/A — document bugs and export your report when complete.</p>
+    </div>
+    <div class="hero-meta">
+      <div class="meta-title">Session info</div>
+      <div class="meta-field"><label>Tester name</label><input type="text" id="tester-name" placeholder="Your full name"></div>
+      <div class="meta-field"><label>Date</label><input type="date" id="test-date"></div>
+      <div class="meta-field"><label>Environment</label>
+        <select id="env">
+          <option value="">Select…</option>
+          <option>Local development</option>
+          <option>Staging</option>
+          <option>Production</option>
+        </select>
+      </div>
+      <div class="meta-field"><label>Build / version</label><input type="text" id="build-ver" placeholder="e.g. v1.2.0"></div>
+    </div>
+  </div>
+</header>
+
+<!-- PROGRESS STRIP -->
+<div class="progress-strip">
+  <div class="progress-inner">
+    <div class="stat-group">
+      <div class="stat"><span class="stat-dot pass"></span><span class="stat-val" id="cnt-p">0</span>&nbsp;<span class="stat-lbl">Pass</span></div>
+      <div class="stat"><span class="stat-dot fail"></span><span class="stat-val" id="cnt-f">0</span>&nbsp;<span class="stat-lbl">Fail</span></div>
+      <div class="stat"><span class="stat-dot na"></span><span class="stat-val" id="cnt-n">0</span>&nbsp;<span class="stat-lbl">N/A</span></div>
+      <div class="stat"><span class="stat-dot pend"></span><span class="stat-val" id="cnt-pend">0</span>&nbsp;<span class="stat-lbl">Pending</span></div>
+    </div>
+    <div class="bar-wrap">
+      <div class="bar-bg"><div class="bar-fill" id="bar" style="width:0%"></div></div>
+      <div class="bar-pct" id="bar-pct">0% complete</div>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<main class="main">
+  <div id="sections"></div>
+
+  <!-- BUG REPORTS -->
+  <div class="bug-card">
+    <div class="bug-head" onclick="toggleEl('bug-body','bug-chev')">
+      <div class="bug-icon">🐛</div>
+      <span class="bug-head-title">4 &nbsp; Failure notes &amp; bug reports</span>
+      <span class="bug-count-badge" id="bug-badge">0</span>
+      <span class="sec-chevron open" id="bug-chev">
+        <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </span>
+    </div>
+    <div class="bug-body open" id="bug-body">
+      <div id="bug-list"></div>
+      <button class="add-bug" onclick="addBug()">＋ &nbsp;Add bug report</button>
+      <div class="action-bar">
+        <button class="btn btn-teal" onclick="exportReport()">↓ &nbsp;Export report</button>
+        <button class="btn btn-navy" onclick="copySummary()">⎘ &nbsp;Copy summary</button>
+        <button class="btn btn-outline" onclick="window.print()">⎙ &nbsp;Print</button>
+        <button class="btn btn-danger" onclick="resetAll()">↺ &nbsp;Reset all</button>
+      </div>
+      <p class="export-note">Export downloads a formatted .txt report with all results, notes, and bug entries.</p>
+    </div>
+  </div>
+
+  <!-- SIGN OFF -->
+  <div class="signoff-card">
+    <div class="signoff-title">Sign-off</div>
+    <div class="signoff-grid">
+      <div class="signoff-block">
+        <label>Intern tester signature</label>
+        <div class="sig-line"></div>
+        <input class="sig-date-input" type="text" placeholder="Date: ___________">
+      </div>
+      <div class="signoff-block">
+        <label>DevOps reviewer signature</label>
+        <div class="sig-line"></div>
+        <input class="sig-date-input" type="text" placeholder="Date: ___________">
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-brand">Innov8<span>Edge</span>, LLC</div>
+  <span class="footer-copy">Academy QA Checklist · Internal Use Only · DevOps / Intern Edition</span>
+</footer>
+
+<script>
+const SECTIONS = [
+  {
+    num:"1", title:"Learning paths navigation",
+    items:[
+      {id:"s1_1", label:"Section load", sub:"Scroll or click the navigation menu to jump to the Learning Paths section on the main landing page."},
+      {id:"s1_2", label:"Track visibility — all 4 tracks", sub:"Verify Beginner, Intermediate, Builder, and Business tracks are all visible and properly styled."},
+      {id:"s1_3", label:"Beginner track CTA routing", sub:"Click \"Start this path\" on the Beginner / AI Foundations track and confirm correct routing to the learning module."},
+      {id:"s1_4", label:"Track card layout", sub:"Confirm each track card displays its title, description, and CTA button without overflow or clipping."},
+      {id:"s1_5", label:"Responsive layout", sub:"Resize to tablet (768px) and mobile (375px) — all 4 track cards remain readable and properly stacked."},
+    ]
+  },
+  {
+    num:"2", title:"AI Foundations — course loader validation",
+    intro:"For each lesson verify: (a) video player renders and plays, (b) intro text is readable, (c) Callout Box shows with distinct background styling, (d) bulleted points are listed correctly.",
+    groups:[{
+      label:"Lesson-by-lesson verification",
+      items:[
+        {id:"s2_1", label:"Lesson 1 — What is AI? (15 min)", sub:"Expected heading: \"The Three Types of AI You'll Actually Use\"", url:"https://www.youtube.com/watch?v=aircAruvnKk"},
+        {id:"s2_2", label:"Lesson 2 — What is an LLM? (20 min)", sub:"Expected heading: \"What Makes One LLM Different From Another\""},
+        {id:"s2_3", label:"Lesson 3 — Prompt Engineering Basics (30 min)", sub:"Expected heading: \"The Four Elements of a High-Performance Prompt\""},
+        {id:"s2_4", label:"Lesson 4 — AI Memory & Context (25 min)", sub:"Expected heading: \"The Four Memory Strategies in Modern AI Systems\""},
+        {id:"s2_5", label:"Lesson 5 — AI Ethics & Bias (20 min)", sub:"Expected heading: \"The Four Sources of AI Bias to Watch\""},
+        {id:"s2_6", label:"Lesson 6 — Security & Privacy (20 min)", sub:"Expected heading: \"Four Security Principles for AI Systems\""},
+        {id:"s2_7", label:"Lesson 7 — Identifying AI Opportunities (25 min)", sub:"Expected heading: \"Four Signals That a Task Is Ready for AI\""},
+        {id:"s2_8", label:"Lesson 8 — The AI Decision Matrix (30 min)", sub:"Expected heading: \"The Four Quadrants of the AI Decision Matrix\""},
+        {id:"s2_9", label:"Lesson 9 — Building the Business Case (35 min)", sub:"Expected heading: \"Four Components of a Compelling AI Business Case\""},
+      ]
+    }]
+  },
+  {
+    num:"3", title:"General lesson UI / UX",
+    items:[
+      {id:"s3_1", label:"Duration badge", sub:"Duration badge (e.g. \"15 min\") appears correctly on all 9 lesson cards."},
+      {id:"s3_2", label:"Callout box styling", sub:"All callout boxes render with a distinct background that visually separates them from body text."},
+      {id:"s3_3", label:"Bulleted point lists", sub:"Bulleted list items inside each lesson are styled correctly and fully visible."},
+      {id:"s3_4", label:"Lesson-to-lesson navigation", sub:"Users can transition smoothly via Next Lesson button or nav without page errors or broken state."},
+      {id:"s3_5", label:"Back navigation", sub:"Browser back button and in-app back link returns to the correct previous page without breaking layout."},
+      {id:"s3_6", label:"Video playback controls", sub:"Each embedded YouTube player shows standard controls (play, pause, volume, fullscreen) and responds correctly."},
+      {id:"s3_7", label:"Mobile video render", sub:"On a 375px viewport the video player scales responsively and does not overflow its container."},
+      {id:"s3_8", label:"Heading hierarchy", sub:"H1/H2 heading hierarchy is visually distinct and consistent across all 9 lessons."},
+      {id:"s3_9", label:"Font readability", sub:"Body copy font size, line height, and contrast meet acceptable readability standards."},
+      {id:"s3_10", label:"Console errors", sub:"No JavaScript errors appear in Dev Tools console during normal lesson navigation."},
+      {id:"s3_11", label:"Page load speed", sub:"Each lesson page fully renders in under 5 seconds on a standard broadband connection."},
+    ]
+  }
+];
+
+const state = {};
+let bugCount = 0;
+const autoBugged = new Set();
+
+function allItems(){
+  const out=[];
+  SECTIONS.forEach(s=>{
+    if(s.items) s.items.forEach(i=>out.push(i));
+    if(s.groups) s.groups.forEach(g=>g.items.forEach(i=>out.push(i)));
+  });
+  return out;
+}
+
+function updateProgress(){
+  const items=allItems(); let p=0,f=0,n=0,pend=0;
+  items.forEach(i=>{ const v=state[i.id]||"pend"; if(v==="P")p++; else if(v==="F")f++; else if(v==="N")n++; else pend++; });
+  document.getElementById("cnt-p").textContent=p;
+  document.getElementById("cnt-f").textContent=f;
+  document.getElementById("cnt-n").textContent=n;
+  document.getElementById("cnt-pend").textContent=pend;
+  const done=p+f+n, pct=items.length?Math.round(done/items.length*100):0;
+  document.getElementById("bar").style.width=pct+"%";
+  document.getElementById("bar-pct").textContent=pct+"% complete";
+  SECTIONS.forEach((_,idx)=>updateSecProgress(idx));
+}
+
+function updateSecProgress(idx){
+  const sec=SECTIONS[idx];
+  const items=sec.items||(sec.groups||[]).flatMap(g=>g.items);
+  let done=0; items.forEach(i=>{ if(state[i.id]&&state[i.id]!=="pend") done++; });
+  const el=document.getElementById("secprog-"+idx);
+  if(el) el.textContent=done+"/"+items.length+" done";
+}
+
+function setStatus(id,val){
+  const cur=state[id]||"pend";
+  state[id]=cur===val?"pend":val;
+  const row=document.querySelector(`tr[data-id="${id}"]`);
+  if(!row) return;
+  row.className="";
+  const v=state[id];
+  if(v==="P") row.classList.add("row-p");
+  else if(v==="F") row.classList.add("row-f");
+  else if(v==="N") row.classList.add("row-n");
+  row.querySelectorAll(".toggle-btn").forEach(b=>b.classList.remove("on-p","on-f","on-n"));
+  if(v==="P") row.querySelector(".btn-p").classList.add("on-p");
+  else if(v==="F") row.querySelector(".btn-f").classList.add("on-f");
+  else if(v==="N") row.querySelector(".btn-n").classList.add("on-n");
+  if(v==="F"){ const lbl=row.querySelector(".item-label")?.textContent||""; autoAddBug(id,lbl); }
+  updateProgress();
+}
+
+function buildRow(item){
+  const tr=document.createElement("tr");
+  tr.setAttribute("data-id",item.id);
+  tr.innerHTML=`
+    <td>
+      <span class="item-label">${item.label}</span>
+      ${item.sub?`<span class="item-sub">${item.sub}</span>`:""}
+      ${item.url?`<span class="item-url"><a href="${item.url}" target="_blank">&#x1F517; ${item.url}</a></span>`:""}
+    </td>
+    <td class="center"><button class="toggle-btn btn-p" onclick="setStatus('${item.id}','P')">P</button></td>
+    <td class="center"><button class="toggle-btn btn-f" onclick="setStatus('${item.id}','F')">F</button></td>
+    <td class="center"><button class="toggle-btn btn-n" onclick="setStatus('${item.id}','N')">N/A</button></td>
+    <td class="note-col"><textarea class="note-inp" id="note-${item.id}" placeholder="Notes…" oninput="growTA(this)" aria-label="Notes"></textarea></td>
+  `;
+  return tr;
+}
+
+function buildSection(sec,idx){
+  const card=document.createElement("div"); card.className="section-card";
+  card.innerHTML=`
+    <div class="section-head" onclick="toggleEl('secbody-${idx}','secchev-${idx}')">
+      <div class="sec-num">${sec.num}</div>
+      <span class="sec-title">${sec.title}</span>
+      <span class="sec-progress" id="secprog-${idx}"></span>
+      <span class="sec-chevron open" id="secchev-${idx}">
+        <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+      </span>
+    </div>
+    <div class="section-body open" id="secbody-${idx}">
+      ${sec.intro?`<div class="section-intro">${sec.intro}</div>`:""}
+    </div>
+  `;
+  const body=card.querySelector(".section-body");
+
+  function makeTable(items){
+    const tbl=document.createElement("table"); tbl.className="check-table";
+    tbl.innerHTML=`<thead><tr><th>Test item / description</th><th class="center">P</th><th class="center">F</th><th class="center">N/A</th><th class="note-col">Notes</th></tr></thead>`;
+    const tb=document.createElement("tbody");
+    items.forEach(i=>tb.appendChild(buildRow(i)));
+    tbl.appendChild(tb); return tbl;
+  }
+
+  if(sec.items){ body.appendChild(makeTable(sec.items)); }
+  if(sec.groups){ sec.groups.forEach(g=>{ const lbl=document.createElement("div"); lbl.className="sub-label"; lbl.textContent=g.label; body.appendChild(lbl); body.appendChild(makeTable(g.items)); }); }
+
+  return card;
+}
+
+function toggleEl(bodyId, chevId){
+  const b=document.getElementById(bodyId), c=document.getElementById(chevId);
+  b.classList.toggle("open"); c.classList.toggle("open");
+}
+
+function growTA(el){ el.style.height="auto"; el.style.height=el.scrollHeight+"px"; }
+
+function autoAddBug(id,label){ if(autoBugged.has(id)) return; autoBugged.add(id); addBug(label); }
+
+function addBug(prefill=""){
+  bugCount++;
+  const div=document.createElement("div"); div.className="bug-item"; div.id="bug-"+bugCount;
+  div.innerHTML=`
+    <div class="bug-item-num">Bug #${bugCount}</div>
+    <button class="bug-remove-btn" onclick="removeBug('bug-${bugCount}')" aria-label="Remove">✕</button>
+    <div class="bug-grid">
+      <div class="bug-field bug-full"><label>Feature / module</label><input type="text" placeholder="e.g. Lesson 3 — Prompt Engineering" value="${prefill}"></div>
+      <div class="bug-field bug-full"><label>Bug description</label><input type="text" placeholder="Brief description of the issue"></div>
+      <div class="bug-field bug-full"><label>Steps to reproduce</label><textarea placeholder="1. Navigate to…&#10;2. Click…&#10;3. Observe…"></textarea></div>
+      <div class="bug-field"><label>Severity</label><select class="sev-select"><option>Critical</option><option>High</option><option selected>Medium</option><option>Low</option></select></div>
+      <div class="bug-field"><label>Expected result</label><input type="text" placeholder="What should happen"></div>
+      <div class="bug-field bug-full"><label>Actual result</label><input type="text" placeholder="What actually happened"></div>
+    </div>
+  `;
+  document.getElementById("bug-list").appendChild(div);
+  updateBugBadge();
+  div.scrollIntoView({behavior:"smooth",block:"nearest"});
+}
+
+function removeBug(id){ document.getElementById(id)?.remove(); updateBugBadge(); }
+function updateBugBadge(){ document.getElementById("bug-badge").textContent=document.querySelectorAll(".bug-item").length; }
+
+function exportReport(){
+  const name=document.getElementById("tester-name").value||"—";
+  const date=document.getElementById("test-date").value||"—";
+  const env=document.getElementById("env").value||"—";
+  const build=document.getElementById("build-ver").value||"—";
+  const items=allItems(); let p=0,f=0,n=0,pend=0;
+  items.forEach(i=>{const v=state[i.id]||"pend"; if(v==="P")p++; else if(v==="F")f++; else if(v==="N")n++; else pend++;});
+  const pct=items.length?Math.round((p+f+n)/items.length*100):0;
+
+  let r=`INNOV8EDGE ACADEMY — QA TESTING REPORT\n${"=".repeat(52)}\n`;
+  r+=`Tester:       ${name}\nDate:         ${date}\nEnvironment:  ${env}\nBuild:        ${build}\n\n`;
+  r+=`SUMMARY\n${"─".repeat(30)}\nPass: ${p}  |  Fail: ${f}  |  N/A: ${n}  |  Pending: ${pend}\nProgress: ${pct}% (${p+f+n}/${items.length} items reviewed)\n\n`;
+
+  SECTIONS.forEach(sec=>{
+    r+=`SECTION ${sec.num} — ${sec.title.toUpperCase()}\n${"─".repeat(44)}\n`;
+    const sItems=sec.items||(sec.groups||[]).flatMap(g=>g.items);
+    sItems.forEach(i=>{
+      const v=state[i.id]||"PENDING";
+      const note=document.getElementById("note-"+i.id)?.value||"";
+      r+=`[${v.padEnd(7)}] ${i.label}${note?" — "+note:""}\n`;
+    });
+    r+="\n";
+  });
+
+  const bugs=document.querySelectorAll(".bug-item");
+  if(bugs.length){
+    r+=`BUG REPORTS (${bugs.length})\n${"─".repeat(44)}\n`;
+    bugs.forEach((bug,i)=>{
+      const inputs=bug.querySelectorAll("input,textarea,select");
+      r+=`Bug #${i+1}\n`;
+      ["Feature/Module","Description","Steps","Severity","Expected","Actual"].forEach((lbl,j)=>{
+        if(inputs[j]?.value) r+=`  ${lbl}: ${inputs[j].value}\n`;
+      });
+      r+="\n";
+    });
+  }
+  r+=`\n${"─".repeat(52)}\nInnov8Edge, LLC — Internal Use Only — Academy QA Program`;
+
+  const a=document.createElement("a");
+  a.href=URL.createObjectURL(new Blob([r],{type:"text/plain"}));
+  a.download=`innov8edge_qa_${date||"draft"}.txt`;
+  a.click();
+}
+
+function copySummary(){
+  const items=allItems(); let p=0,f=0,n=0,pend=0;
+  items.forEach(i=>{const v=state[i.id]||"pend"; if(v==="P")p++; else if(v==="F")f++; else if(v==="N")n++; else pend++;});
+  const pct=items.length?Math.round((p+f+n)/items.length*100):0;
+  const name=document.getElementById("tester-name").value||"Tester";
+  const date=document.getElementById("test-date").value||new Date().toISOString().split("T")[0];
+  const txt=`Innov8Edge Academy QA — ${name} (${date})\nPass: ${p} | Fail: ${f} | N/A: ${n} | Pending: ${pend} | ${pct}% complete`;
+  navigator.clipboard?.writeText(txt).catch(()=>{});
+  alert("Summary copied!\n\n"+txt);
+}
+
+function resetAll(){
+  if(!confirm("Reset all test results? This cannot be undone.")) return;
+  Object.keys(state).forEach(k=>delete state[k]);
+  document.querySelectorAll("tr[data-id]").forEach(row=>{
+    row.className="";
+    row.querySelectorAll(".toggle-btn").forEach(b=>b.classList.remove("on-p","on-f","on-n"));
+  });
+  document.querySelectorAll(".note-inp").forEach(n=>n.value="");
+  document.getElementById("bug-list").innerHTML="";
+  bugCount=0; autoBugged.clear(); updateBugBadge(); updateProgress();
+}
+
+// Init
+const wrap=document.getElementById("sections");
+SECTIONS.forEach((sec,idx)=>wrap.appendChild(buildSection(sec,idx)));
+document.getElementById("test-date").value=new Date().toISOString().split("T")[0];
+updateProgress();
+</script>
+</body>
+</html>

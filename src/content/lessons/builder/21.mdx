@@ -1,0 +1,60 @@
+---
+title: "Cost-Benefit Analysis for Autonomy"
+description: "Calculating the ROI of AI agents and knowing when a 'dumb' script is more efficient than an 'intelligent' one."
+duration: "60 min"
+trackId: "builder"
+examples: |
+  ### Case Study 1: The $50 Summary
+  A company wants to summarize every customer support ticket.
+  - **Agent Approach:** Using GPT-4o to read and summarize. Cost: $0.10 per ticket. Result: High quality, but $1,000/month.
+  - **Script Approach:** Using a simple keyword filter to categorize tickets. Cost: $0.00.
+  - **Analysis:** Unless the nuance of the summary is worth $1,000/month, the "dumb" script is the winner.
+
+  ### Case Study 2: The Runaway Researcher
+  An autonomous research agent is left running overnight. It makes 5,000 web searches and reads 2,000 pages. Total cost: $400.00. 
+  **Analysis:** If the research leads to a $10,000 business deal, the ROI is massive. If it was just to find a recipe for cookies, the cost is a total loss.
+
+  ### Case Study 3: Model Tiering
+  A multi-agent squad uses GPT-4o (Expensive) for the 'Architect' agent and GPT-4o-mini (Cheap) for the 'Writer' and 'Summarizer' agents. 
+  **Analysis:** By using the 'Intelligent' model only for the hardest logic and the 'Fast/Cheap' model for the bulk work, the company reduces their API bill by 80% without losing quality.
+humanModeContent: "AI is amazing, but it's not free. Every word an agent says costs a fraction of a cent. This lesson is about making sure your AI 'employee' doesn't spend more money than it's making for your business."
+quiz:
+  - question: "What is the biggest cost driver for autonomous agents?"
+    options: ["Electricity", "API Token usage (Input + Output)", "Internet speed", "The type of computer used"]
+    correctAnswer: 1
+    explanation: "LLM providers charge per 'token'. Since agents often operate in loops (Think -> Act -> Observe), they can consume thousands of tokens for a single task."
+  - question: "When is a 'Dumb' script better than an AI Agent?"
+    options: ["Never", "When the task is 100% predictable and doesn't require reasoning or natural language understanding", "When you want it to look cool", "When the AI is too fast"]
+    correctAnswer: 1
+    explanation: "If a task can be solved with a simple 'If/Then' statement in code, it will always be faster, cheaper, and more reliable than using an LLM."
+  - question: "What is 'Model Tiering'?"
+    options: ["Buying more models", "Using different sized models (Large vs Small) for different tasks to optimize cost/performance", "Stacking computers on top of each other", "A type of AI training"]
+    correctAnswer: 1
+    explanation: "You use high-reasoning models (Expensive) for planning and low-reasoning models (Cheap) for simple tasks like formatting or summarization."
+  - question: "What is the 'Token Tax' in agentic loops?"
+    options: ["A government fee", "The accumulation of cost as an agent keeps sending previous history back to the model in every step of a loop", "A type of credit card fee", "The cost of installing the AI"]
+    correctAnswer: 1
+    explanation: "In each step of a loop, the agent sends the *entire* previous history to the model. This means the 10th step costs much more than the 1st step."
+  - question: "How do you calculate the ROI of an AI agent?"
+    options: ["(Human Hours Saved * Hourly Rate) - (AI API Cost)", "Count the number of words it said", "Measure how fast it typed", "Ask the AI if it's worth it"]
+    correctAnswer: 0
+    explanation: "A true ROI calculation compares the cost of the human labor that was replaced or augmented against the cost of the AI infrastructure and maintenance."
+---
+
+# Cost-Benefit Analysis
+
+In this track, we move from **Engineering** to **Economics**.
+
+## The Price of Intelligence
+Every time an agent "Thinks," it costs money. In an autonomous loop, those costs can compound rapidly.
+
+### The Architect's Financial Checklist:
+1. **Criticality:** Does this task *need* reasoning? (If no, use a script).
+2. **Frequency:** How often will this run? (High frequency = High cost).
+3. **Accuracy vs. Cost:** Can a cheaper model (GPT-4o-mini) get the job done at 90% accuracy?
+4. **Human Comparison:** How much would a human freelancer charge for this exact task?
+
+## Efficiency is a Feature
+Building an agent that solves a problem is easy. Building an agent that solves a problem **profitably** is what separates a hobbyist from a professional AI Architect.
+
+> **Pro Tip:** Always implement **Max Iteration Limits**. An agent that gets stuck in a loop and spends $500 while you sleep is a failure of governance.

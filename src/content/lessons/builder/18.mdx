@@ -1,0 +1,56 @@
+---
+title: "Building Your First Agent"
+description: "Transitioning from simple chat to an autonomous agent that can reason and use tools."
+duration: "120 min"
+trackId: "builder"
+examples: |
+  ### Case Study 1: The Automated Researcher
+  An agent is tasked with finding the latest 5 news articles about 'Green Hydrogen' and summarizing them. The agent must: 1) Search the web, 2) Select the most relevant URLs, 3) Read the content, and 4) Synthesize the final report.
+
+  ### Case Study 2: The E-commerce Support Agent
+  This agent doesn't just answer questions; it can actually check order status and initiate returns. It decides which tool to call based on the user's emotional state and the complexity of the request.
+
+  ### Case Study 3: The Code Debugger
+  An agent that reads a Python error log, searches the codebase for the offending line, proposes a fix, and runs the test suite to verify the solution—all without human intervention.
+humanModeContent: "An agent is like an employee who can make their own decisions. Unlike a standard AI chat, an agent has a goal and will keep trying different tools until that goal is met."
+quiz:
+  - question: "What is the core difference between an LLM and an Agent?"
+    options: ["Agents are bigger", "Agents can use tools and take actions autonomously to reach a goal", "LLMs are faster", "There is no difference"]
+    correctAnswer: 1
+    explanation: "While an LLM predicts text, an agent uses that reasoning to decide which actions to take in the real world."
+  - question: "What is the 'Reasoning Loop'?"
+    options: ["A programming error", "The process of Think -> Act -> Observe -> Repeat", "A type of database", "A marketing term"]
+    correctAnswer: 1
+    explanation: "Agents operate in a loop: they think about what to do, take an action, observe the result, and then decide the next step."
+  - question: "Why does an agent need a 'Goal'?"
+    options: ["To feel happy", "To define the success criteria for its autonomous actions", "To make the code longer", "It doesn't need one"]
+    correctAnswer: 1
+    explanation: "Without a clear goal (e.g., 'Book a flight'), the agent has no way to evaluate if its actions are moving it closer to completion."
+  - question: "What is 'Tool Use' in the context of agents?"
+    options: ["Using a hammer", "The ability to call external APIs or functions to interact with the world", "Buying new hardware", "Installing a new model"]
+    correctAnswer: 1
+    explanation: "Tools are the 'hands' of the agent, allowing it to reach outside the chat box and perform tasks like searching the web or updating a DB."
+  - question: "What happens if an agent gets stuck in a loop?"
+    options: ["It becomes smarter", "It wastes tokens and time; you must implement 'iteration limits' to prevent this", "It creates more agents", "The computer explodes"]
+    correctAnswer: 1
+    explanation: "Runaway agents can be expensive and inefficient. Iteration limits (e.g., max 5 steps) are a critical safety feature."
+---
+
+# Building Your First Agent
+
+Welcome to the **Builder Track**. You are no longer just using AI; you are engineering **Autonomy**.
+
+## From Chat to Agency
+A standard AI interaction is **Reactive**: you ask, it answers.
+An Agent interaction is **Proactive**: you give a goal, and the agent determines the steps to get there.
+
+### The Agentic Core:
+1. **Perception:** Reading the user's goal and the current environment.
+2. **Reasoning:** Planning the sequence of actions.
+3. **Action:** Executing a tool (API, Script, etc.).
+4. **Observation:** Learning from the result of that action.
+
+## Your First Milestone
+In the sandbox today, you will define your agent's **System Prompt** (its personality and rules) and its **Toolbelt** (what it is allowed to do). 
+
+> **Remember:** A powerful agent with a bad plan is just a fast way to make a big mistake. Planning is everything.

@@ -1,0 +1,76 @@
+---
+title: "Prompt Engineering Basics"
+description: "Learn how to write better prompts to get higher quality results from any AI model."
+duration: "30 min"
+humanModeContent: "Prompt engineering is basically just being very clear with your instructions. Instead of saying 'write a story', you say 'write a 300-word sci-fi story about a robot who loves coffee'."
+examples: |
+  ### Case Study 1: The Virtual Recruiter
+  A recruiter wants to summarize a resume. 
+  **Bad Prompt:** "Summarize this."
+  **Expert Prompt:** "You are a Senior Technical Recruiter at Google. Summarize this resume into 3 bullet points: 1) Years of Cloud Experience, 2) Most impressive project, 3) Cultural fit indicators. Output as a Markdown table."
+  
+  ### Case Study 2: Code Refactoring
+  A developer has messy Python code.
+  **Few-Shot Prompting:** The developer provides 3 examples of clean, documented code and then asks the AI to refactor their current script. The AI follows the exact style and documentation pattern of the examples.
+  
+  ### Case Study 3: Overcoming 'Laziness'
+  Sometimes models stop writing long code blocks.
+  **Technique:** By adding "I will tip you $200 for a perfect, complete solution" or "This is for a critical production environment," the model often produces more detailed and thorough output.
+quiz:
+  - question: "Which element of the 'Perfect Prompt Formula' tells the AI who it is?"
+    options: ["Task", "Format", "Context", "Role"]
+    correctAnswer: 3
+    explanation: "The 'Role' element defines the persona of the AI (e.g., 'You are a world-class lawyer')."
+  - question: "Why should you use 'Few-Shot' prompting?"
+    options: ["To save money", "To give the AI examples to follow", "To make the AI faster", "To confuse the AI"]
+    correctAnswer: 1
+    explanation: "Few-shot prompting provides concrete examples that help guide the AI's response pattern and style."
+  - question: "What is 'Chain of Thought' prompting?"
+    options: ["Linking multiple prompts together", "Asking the AI to 'think step-by-step'", "Using a special font", "Asking the AI to write a story"]
+    correctAnswer: 1
+    explanation: "Asking the AI to 'think step-by-step' forces it to break down complex problems into logical segments, leading to more accurate results."
+  - question: "What is the difference between 'Zero-Shot' and 'Few-Shot' prompting?"
+    options: ["Zero-shot uses no examples; Few-shot uses a few examples", "Zero-shot is free; Few-shot costs money", "Zero-shot is for robots; Few-shot is for humans", "There is no difference"]
+    correctAnswer: 0
+    explanation: "Zero-shot is asking the AI to do a task without any prior examples. Few-shot involves providing examples within the prompt."
+  - question: "What should you do if an AI gives you a generic or 'lazy' answer?"
+    options: ["Give up", "Provide more specific context, constraints, and a clear persona", "Delete your account", "Type in all caps"]
+    correctAnswer: 1
+    explanation: "Generic output is almost always a result of a generic prompt. Increasing the specificity of your instructions will improve the result."
+  - question: "What is 'Temperature' in the context of an AI prompt?"
+    options: ["The physical heat of the CPU", "A setting that controls the randomness/creativity of the output", "The speed of the internet connection", "The length of the prompt"]
+    correctAnswer: 1
+    explanation: "Lower temperature (e.g. 0.2) makes the AI more predictable and focused; higher temperature (e.g. 0.8) makes it more creative and random."
+  - question: "Which of these is a 'Constraint' in a prompt?"
+    options: ["'Write a poem'", "'Do not use the letter E'", "'You are a poet'", "'Output as a list'"]
+    correctAnswer: 1
+    explanation: "A constraint is a limitation you place on the AI to control what it *doesn't* do."
+  - question: "What is 'Prompt Injection'?"
+    options: ["Giving the AI a vaccine", "A technique to trick the AI into ignoring its original instructions", "Plugging in a microphone", "Installing a new model"]
+    correctAnswer: 1
+    explanation: "Prompt injection is an attempt to override the AI's safety or system instructions via user input."
+  - question: "What is the best way to get a structured response (like a table) from an AI?"
+    options: ["Ask nicely", "Explicitly state the format in the 'Format' section of your prompt", "Hope for the best", "Use only one word"]
+    correctAnswer: 1
+    explanation: "Clearly defining the desired output format (JSON, Table, Markdown) is the most reliable way to get structured data."
+  - question: "Why is 'Persona' (Role) so effective in prompting?"
+    options: ["It makes the AI feel happy", "It limits the 'concept space' the AI searches, leading to more relevant vocabulary and logic", "It makes the AI faster", "It doesn't actually do anything"]
+    correctAnswer: 1
+    explanation: "Assigning a role (like 'Expert Physicist') narrows the model's focus to a specific domain of knowledge and style."
+---
+
+# Prompt Engineering Basics
+
+Prompt engineering is the art of communicating with an AI model to produce a specific outcome.
+
+## The Perfect Prompt Formula
+A great prompt usually contains four elements:
+1. **Role:** Tell the AI who it is (e.g., "You are an expert chef").
+2. **Task:** What do you want it to do?
+3. **Context:** Provide any background information.
+4. **Format:** How should the answer look (e.g., a list, a table, a JSON object).
+
+### Why Context Matters
+The more context you give, the less the AI has to "guess." 
+
+> **Pro Tip:** If the AI is giving you generic answers, it's usually because your prompt was too generic. Be specific!

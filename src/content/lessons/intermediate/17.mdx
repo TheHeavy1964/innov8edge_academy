@@ -1,0 +1,57 @@
+---
+title: "Debugging & Error Handling in AI"
+description: "How to build resilient automations that can handle hallucinations and failed tool calls."
+duration: "55 min"
+trackId: "intermediate"
+examples: |
+  ### Case Study 1: The Broken JSON Recovery
+  An AI is asked to output a task list in JSON. It adds conversational filler: "Sure, here it is: { 'task': 'buy milk' }". This breaks the code.
+  **Fix:** The system catches the error, strips the filler, and sends the raw string back to the AI: "Error: Unexpected token 'S'. Return ONLY the JSON object." The AI then outputs a valid, clean JSON string on the second try.
+
+  ### Case Study 2: The Hallucinated Tool Parameter
+  A model tries to call `send_email(recipient: "bob@acme.com", cc: "alice@acme.com")`. However, the actual function does NOT support a 'cc' field. 
+  **Fix:** The code returns an error message: "Function 'send_email' does not support parameter 'cc'." The AI realizes its mistake and calls the tool again with only the valid 'recipient' field.
+
+  ### Case Study 3: The Context Window Overflow
+  A long troubleshooting session reaches its token limit. The AI starts "forgetting" the user's operating system. 
+  **Fix:** The system implements **Conversation Summarization**. Every 10 messages, it asks a smaller model to summarize the core facts (OS, Error Code, Goal) and injects that summary into the prompt, effectively "refreshing" the AI's short-term memory.
+humanModeContent: "Standard code breaks if you misspell a word. AI breaks if it 'hallucinates' or gets confused. We learn how to build safety nets so that when the AI makes a mistake, the whole system doesn't crash."
+quiz:
+  - question: "How does AI failure differ from traditional code failure?"
+    options: ["AI never fails", "AI failure is often 'silent' or 'probabilistic' (hallucinations)", "AI failure always turns the computer off", "There is no difference"]
+    correctAnswer: 1
+    explanation: "Traditional code usually throws an error and stops. AI might confidently return a wrong answer (hallucination) without throwing an error, requiring different validation strategies."
+  - question: "What is a 'Retry Logic' with a modified prompt?"
+    options: ["A way to annoy the user", "Asking the AI to try again but with clearer instructions or constraints", "Restarting the whole computer", "Using a different computer"]
+    correctAnswer: 1
+  - question: "What is a 'Silent Failure' in AI?"
+    options: ["When the computer doesn't make any noise", "When the AI gives a wrong or hallucinated answer without throwing a technical error", "When the internet goes down", "When you forget to click 'Send'"]
+    correctAnswer: 1
+    explanation: "Silent failures are dangerous because the system keeps running as if everything is fine, even though the data or action is incorrect."
+  - question: "Why is 'Self-Correction' a powerful debugging pattern?"
+    options: ["It makes the AI feel better", "It allows the system to automatically fix minor mistakes (like bad JSON) by asking the AI to try again with the error info", "It replaces the need for a human", "It makes the code shorter"]
+    correctAnswer: 1
+    explanation: "LLMs are remarkably good at fixing their own mistakes if you clearly explain what went wrong in the previous turn."
+  - question: "When should you use a 'Fallback' to a human?"
+    options: ["For every single task", "When the AI fails multiple times on a high-stakes task", "Never", "Only when the AI asks for help"]
+    correctAnswer: 1
+    explanation: "Fallbacks ensure that if the probabilistic AI cannot reach a confident or valid result, a human expert can take over and maintain the system's integrity."
+---
+
+# Debugging & Error Handling
+
+AI is **Probabilistic**, meaning it won't always give the same output twice. To build production-ready systems, you must design for **Resilience**.
+
+## Common AI Failure Modes
+1. **Hallucination:** The AI makes up a tool parameter that doesn't exist.
+2. **Schema Break:** The AI outputs text instead of valid JSON.
+3. **Context Overflow:** The conversation gets too long and the AI "forgets" the instructions.
+4. **Tool Rejection:** The AI refuses to use a tool it thinks is "unsafe."
+
+### The Resilient Architect's Toolkit:
+- **Validation Layers:** Use standard code (like Zod or JSON.parse) to verify the AI's output before executing it.
+- **Self-Correction:** If the AI fails, send the error back to it: *"Your previous output was invalid JSON. Please try again."*
+- **Fallbacks:** If the AI fails twice, route the task to a **Human-in-the-Loop**.
+
+## Error Handling is the Product
+In AI engineering, anyone can build a "Happy Path" prototype. A professional is someone who has built the "Error Paths"—the logic that ensures the system stays stable even when the model gets confused.

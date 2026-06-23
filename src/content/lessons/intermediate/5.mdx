@@ -1,0 +1,77 @@
+---
+title: "MCP Explained"
+description: "Learn how the Model Context Protocol (MCP) allows AI to interact with your local files, databases, and APIs."
+duration: "45 min"
+humanModeContent: "MCP is like a universal translator for AI. It lets the AI 'plug in' to your computer or your favorite apps so it can actually do work for you, like reading your files or checking your calendar."
+examples: |
+  ### Case Study 1: The Local Coding Assistant
+  A software engineer uses an MCP-enabled AI to help refactor a legacy codebase. Instead of pasting code manually, the AI uses an **MCP Filesystem Server** to browse the entire directory, read relevant configuration files, and suggest changes across 10 different files simultaneously.
+  
+  ### Case Study 2: Real-time SQL Analyst
+  A marketing manager needs to know how many customers signed up yesterday. They use an **MCP SQLite Server** connected to their database. The manager types 'How many new users yesterday?' and the AI automatically writes and executes the SQL query, presenting the result as a chart.
+  
+  ### Case Study 3: The Unified Calendar Agent
+  A busy executive uses an **MCP Google Calendar Server**. When they say 'Clear my afternoon,' the AI doesn't just promise to do it—it actually connects to the API, identifies the 3 meetings after 2 PM, and sends cancellation emails to all participants.
+quiz:
+  - question: "What does 'MCP' stand for?"
+    options: ["Master Computer Processor", "Model Context Protocol", "Multiple Connection Path", "Memory Control Platform"]
+    correctAnswer: 1
+    explanation: "MCP stands for Model Context Protocol, an open standard that allows AI models to connect to external data sources and tools."
+  - question: "Who created the Model Context Protocol?"
+    options: ["OpenAI", "Anthropic", "Google", "Microsoft"]
+    correctAnswer: 1
+    explanation: "MCP was introduced by Anthropic to create a standard way for AI to safely interact with local and remote resources."
+  - question: "What is an 'MCP Server'?"
+    options: ["A big computer in a warehouse", "A small piece of software that acts as a bridge between the AI and a specific tool (like Google Drive)", "A type of battery", "A human assistant"]
+    correctAnswer: 1
+    explanation: "An MCP Server is the middle-man that exposes specific data or functions (like reading files) to the AI in a way it understands."
+  - question: "Why is MCP better than 'custom code' for every tool?"
+    options: ["It is cheaper", "It provides a universal standard, meaning one server works with any MCP-enabled AI", "It is faster to type", "It only works on Windows"]
+    correctAnswer: 1
+    explanation: "MCP is a protocol. Once you build an MCP server for your database, any AI that speaks MCP can use it without needing a custom integration."
+  - question: "Which of these is a typical 'Local' use case for MCP?"
+    options: ["Ordering a pizza", "Reading and editing files on your laptop's hard drive", "Searching the public internet", "Watching YouTube"]
+    correctAnswer: 1
+    explanation: "One of the most powerful features of MCP is allowing AI to securely interact with your local files and development environment."
+  - question: "Does MCP require you to give your files to the AI company?"
+    options: ["Yes, everything is uploaded", "No, the AI only 'sees' the specific data the MCP server provides during a session", "Only if you click 'Save'", "Yes, but only for 24 hours"]
+    correctAnswer: 1
+    explanation: "MCP allows for local-first data. The data stays on your machine, and the AI only receives the specific snippets it needs to answer your request."
+  - question: "Which component of MCP represents the 'Brain'?"
+    options: ["The MCP Host (e.g., Claude Desktop)", "The MCP Server", "The Hardware", "The User"]
+    correctAnswer: 0
+    explanation: "The MCP Host is the application (like Claude or a custom IDE) that coordinates the AI and the MCP servers."
+  - question: "What is a 'Resource' in MCP terms?"
+    options: ["A person", "A read-only piece of data, like a log file or a database record", "A type of electricity", "A new model"]
+    correctAnswer: 1
+    explanation: "Resources are static or dynamic data that the AI can read to gain context, but usually not modify directly."
+  - question: "What is a 'Tool' in MCP terms?"
+    options: ["A hammer", "A function the AI can execute to change state, like 'Write File' or 'Send Email'", "A browser", "A keyboard"]
+    correctAnswer: 1
+    explanation: "Tools are interactive capabilities. Unlike Resources (which are for reading), Tools allow the AI to perform actions."
+  - question: "Can MCP be used to connect AI to proprietary enterprise data?"
+    options: ["No, it's too risky", "Yes, companies can build private MCP servers to give their AI access to internal wikis and CRM data", "Only if the data is public", "Only on Thursdays"]
+    correctAnswer: 1
+    explanation: "MCP is ideal for enterprise use because it allows secure, controlled access to internal data without exposing it to the open web."
+---
+
+# MCP: The Universal Connector
+
+The **Model Context Protocol (MCP)** is an open standard that enables developers to build secure, two-way connections between AI models and their data/tools.
+
+## Why MCP Matters
+
+Until now, connecting an AI to a new tool (like your company's custom CRM) required writing thousands of lines of custom "glue code." If you switched from OpenAI to Anthropic, you often had to start over.
+
+**MCP changes the game** by creating a standard "plug" that works everywhere. 
+
+### Core Concepts:
+1. **The Host:** The application you are using (e.g., Claude Desktop, Cursor, or this Academy platform).
+2. **The Client:** The piece of code inside the Host that talks to the servers.
+3. **The Server:** A small program that knows how to talk to a specific tool (e.g., a "Google Search Server" or a "PostgreSQL Server").
+
+### Resources vs. Tools
+- **Resources:** Think of these as "Context." The AI can read them to understand the situation (e.g., a README file).
+- **Tools:** Think of these as "Actions." The AI can use them to change the world (e.g., `git_commit` or `send_slack_message`).
+
+> **The Big Picture:** MCP is turning AI from a "Chatbot" into an "Operating System" that can navigate your digital world.

@@ -1,0 +1,91 @@
+---
+title: "Multi-Agent Orchestration"
+description: "Learn how to coordinate 'Squads' of agents to solve problems that are too complex for a single AI."
+duration: "90 min"
+humanModeContent: "A single agent is like a general contractor. A multi-agent squad is like a whole construction crew with a plumber, an electrician, and a carpenter all working together under a manager."
+examples: |
+  ### Case Study 1: The Automated Software House
+  A user asks for a 'Weather App'.
+  **Agent 1 (Architect):** Design the app structure and data needs.
+  **Agent 2 (Coder):** Writes the React code.
+  **Agent 3 (Reviewer):** Tests the code and sends bugs back to the Coder.
+  This 'Squad' builds the app much faster and with fewer errors than one AI alone.
+  
+  ### Case Study 2: The Multi-Step Marketing Campaign
+  **Agent 1 (Researcher):** Identifies trending topics in AI.
+  **Agent 2 (Copywriter):** Writes 3 blog posts based on the research.
+  **Agent 3 (Designer):** Creates image prompts for each post.
+  **Agent 4 (Manager):** Schedules the final content across social media.
+  
+  ### Case Study 3: The Complex Legal Auditor
+  For a 5,000-page merger:
+  **Agents 1-5 (Scanners):** Each reads 1,000 pages looking for 'Red Flags'.
+  **Agent 6 (Consolidator):** Collects all flags and removes duplicates.
+  **Agent 7 (Lead Lawyer):** Analyzes the high-level risk and writes the final summary.
+quiz:
+  - question: "What is 'Multi-Agent Orchestration'?"
+    options: ["Using many computers", "The coordination of multiple specialized agents to achieve a complex goal", "A type of classical music", "Hiring more humans"]
+    correctAnswer: 1
+    explanation: "Orchestration is about team management for AI—dividing a big job into smaller roles for different specialized agents."
+  - question: "What is a 'Hierarchical' orchestration pattern?"
+    options: ["Agents are in a circle", "A 'Manager' agent delegates tasks to 'Worker' agents and reviews their work", "All agents do the same thing", "There is no leader"]
+    correctAnswer: 1
+    explanation: "Hierarchical teams have a leader who manages the high-level plan and supervises the quality of the workers."
+  - question: "What is a 'Sequential' (or Pipeline) pattern?"
+    options: ["Agents work in a specific order, where Agent A's output is Agent B's input", "Agents work at the same time", "Agents work randomly", "Only one agent works"]
+    correctAnswer: 1
+    explanation: "In a pipeline, work flows like an assembly line from one specialist to the next."
+  - question: "Why is 'Specialization' important for agents?"
+    options: ["It makes them cheaper", "Specialized agents with focused system prompts are more reliable and accurate than one 'Generic' agent trying to do everything", "It doesn't matter", "It makes them look better"]
+    correctAnswer: 1
+    explanation: "Just like humans, AI performs better when it has a clear, narrow focus (e.g., 'You are a Senior Security Auditor')."
+  - question: "What is 'Intersentience' (Agent Communication)?"
+    options: ["AI talking to humans", "How agents pass data, instructions, and feedback to one another", "AI becoming alive", "A type of internet connection"]
+    correctAnswer: 1
+    explanation: "Orchestration requires a standard way for agents to 'speak' to each other, often via a shared chat or database."
+  - question: "What is a 'Swarm' pattern?"
+    options: ["A group of bees", "A decentralized system where many identical agents work on small pieces of a problem simultaneously", "A mistake in the code", "A type of virus"]
+    correctAnswer: 1
+    explanation: "Swarms are great for 'High Volume' tasks, like scanning millions of logs or summarizing thousands of reviews in parallel."
+  - question: "What is the biggest challenge in Multi-Agent systems?"
+    options: ["Electricity cost", "Managing the 'Handoff'—ensuring information isn't lost or misinterpreted between agents", "Choosing names", "Finding enough models"]
+    correctAnswer: 1
+    explanation: "The 'Handoff' is where most errors occur. Clear communication protocols are essential for squad stability."
+  - question: "What is a 'Critic' or 'Reviewer' agent?"
+    options: ["An agent that hates everything", "An agent specifically programmed to find errors or weaknesses in another agent's work", "A human manager", "A type of filter"]
+    correctAnswer: 1
+    explanation: "Adding a 'Critic' agent creates a 'Self-Improvement Loop' where the squad polishes its own output before the user sees it."
+  - question: "How does multi-agent help with 'Context Limits'?"
+    options: ["It doesn't", "Each agent only needs the context for its specific task, rather than the whole project", "It uses bigger models", "It compresses the data"]
+    correctAnswer: 1
+    explanation: "By breaking the work up, you avoid overloading any single model's context window."
+  - question: "Which framework is famous for Multi-Agent Orchestration?"
+    options: ["React", "CrewAI or AutoGen", "Tailwind", "WordPress"]
+    correctAnswer: 1
+    explanation: "CrewAI and AutoGen are the industry standards for building and managing squads of AI agents."
+---
+
+# Multi-Agent Orchestration: The Power of Teams
+
+The most powerful AI systems today aren't single models—they are **Squads**. Orchestration is the art of managing these teams.
+
+## Why Teams Beat Individuals
+
+A single AI trying to "Build a Business" will eventually get overwhelmed by details and lose track of the big picture. A squad of 5 agents divides the labor:
+1. **The Visionary:** Keeps track of the high-level roadmap.
+2. **The Researcher:** Gathers the necessary data.
+3. **The Builder:** Implements the solution.
+4. **The Tester:** Looks for bugs and edge cases.
+5. **The Publisher:** Handles the final delivery.
+
+### Common Orchestration Patterns:
+- **Hierarchical:** Manager -> Workers. Best for complex, quality-critical tasks.
+- **Sequential:** Line-up of agents. Best for content pipelines.
+- **Joint-Reasoning:** Agents "discuss" a problem in a shared space to find the best solution.
+
+### The "Squad" Advantage:
+- **Reliability:** Errors are caught by 'Reviewer' agents before they reach the user.
+- **Scalability:** You can add more 'Worker' agents to handle more data.
+- **Modularity:** You can swap out a 'Coder' agent for a better model without changing the rest of the team.
+
+> **Master Tip:** Treat your Agent Squad like a real department. Give them clear roles, specific KPIs, and a defined communication channel.

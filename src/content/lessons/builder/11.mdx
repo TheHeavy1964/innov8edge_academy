@@ -1,0 +1,76 @@
+---
+title: "Deployment & Hosting"
+description: "Move your agents from your laptop to the cloud. Learn about serverless, edge functions, and persistence."
+duration: "45 min"
+humanModeContent: "Deployment is like moving your agent from its 'home' on your computer into its own 'office' on the internet so it can work 24/7, even when your laptop is closed."
+examples: |
+  ### Case Study 1: The Serverless Support Agent
+  A company hosts its support agent on **Vercel Edge Functions**. This ensures the agent is 'always on' and can respond to customers in milliseconds from any country, with zero server maintenance costs.
+  
+  ### Case Study 2: The High-Memory Docker Agent
+  A data science agent requires 64GB of RAM to process massive datasets. It is deployed inside a **Docker Container** on AWS. This 'encapsulation' ensures the agent has exactly the resources it needs and won't crash due to system conflicts.
+  
+  ### Case Study 3: The Persistent Memory Agent
+  An executive assistant agent needs to remember your preferences for months. It is connected to a **Supabase Database**. Every time you talk to it, it 'hydrates' its memory from the database, ensuring a seamless experience across multiple sessions.
+quiz:
+  - question: "What is 'Deployment'?"
+    options: ["Buying a new laptop", "The process of making your AI application available on the internet", "A type of software bug", "Writing more code"]
+    correctAnswer: 1
+    explanation: "Deployment is taking your code from a 'Local' environment (your machine) to a 'Production' environment (the cloud)."
+  - question: "What is a 'Serverless Function' (e.g., AWS Lambda)?"
+    options: ["A computer with no keyboard", "A piece of code that only runs when it is triggered, saving money and resources", "A broken server", "A type of database"]
+    correctAnswer: 1
+    explanation: "Serverless is the standard for AI apps. You only pay for the seconds the AI is actually 'thinking'."
+  - question: "What is 'Docker' used for in AI hosting?"
+    options: ["Shipping physical computers", "Packaging an agent and its entire environment (libraries, OS, tools) so it runs perfectly on any server", "A type of browser", "A programming language"]
+    correctAnswer: 1
+    explanation: "Docker 'containers' solve the 'It works on my machine' problem by ensuring the production environment matches your local setup."
+  - question: "What is 'Persistence'?"
+    options: ["Being annoying", "Saving data (like conversation history or user preferences) so it survives after the session ends", "A type of model", "The speed of the AI"]
+    correctAnswer: 1
+    explanation: "Persistence usually involves a database (like Supabase or Postgres) where the agent's 'Long-term Memory' is stored."
+  - question: "What is a 'Webhook' in the context of deployment?"
+    options: ["A fishing tool", "An HTTP callback that triggers your agent when an external event happens (like a new stripe payment)", "A type of internet cable", "A browser extension"]
+    correctAnswer: 1
+    explanation: "Webhooks allow your deployed agents to 'Listen' to the world and react to events automatically."
+  - question: "What is 'Environment Variable' management?"
+    options: ["Checking the weather", "Safely storing secret keys (like OpenAI or API keys) so they aren't exposed in your code", "A list of users", "A type of encryption"]
+    correctAnswer: 1
+    explanation: "Never hardcode your API keys! Environment variables (like those in a .env file) are the secure way to manage secrets."
+  - question: "Why is 'Latency' important in AI hosting?"
+    options: ["It makes the AI smarter", "It measures the delay between a user's request and the AI's response; lower is better for UX", "It is cheaper", "It makes the AI faster"]
+    correctAnswer: 1
+    explanation: "High latency leads to a poor user experience. Using 'Edge Functions' can help reduce latency by running code closer to the user."
+  - question: "What is 'Observability' (e.g., LangSmith)?"
+    options: ["Watching the AI through a window", "Tools and logs that let you see exactly what the AI is thinking and where it is failing in production", "A type of filter", "A backup drive"]
+    correctAnswer: 1
+    explanation: "Observability is critical for debugging agents. You need to see the full 'Trace' of every tool call and thought process."
+  - question: "What is a 'Rate Limit'?"
+    options: ["A type of tax", "A limit on how many requests you can make to an AI provider per minute", "The speed of the AI", "The length of the prompt"]
+    correctAnswer: 1
+    explanation: "AI providers have limits to prevent abuse. Your deployment logic should include 'Retry' logic to handle rate limit errors gracefully."
+  - question: "What is 'Horizontal Scaling'?"
+    options: ["Making the computer wider", "Adding more server instances to handle thousands of users at the same time", "Buying a bigger CPU", "Using two different models"]
+    correctAnswer: 1
+    explanation: "Scaling allows your application to handle a viral launch without crashing by spreading the load across many servers."
+---
+
+# Deployment: Taking Your AI Live
+
+Building an agent on your laptop is the first step. **Deployment** is how you turn that experiment into a professional tool.
+
+## The Deployment Stack
+
+To go from "Local" to "Live," you need three things:
+1. **Compute:** Where the code runs (e.g., Vercel, AWS, or Render).
+2. **Persistence:** Where the data lives (e.g., Supabase, MongoDB, or Pinecone).
+3. **Connectivity:** How the world talks to it (e.g., APIs, Webhooks, or a Chat UI).
+
+### Cloud vs. Local Hosting
+- **Cloud (Standard):** Fast, scalable, and manageable. Perfect for 99% of apps.
+- **Local (Privacy):** Running models on your own servers. Essential for sensitive data (Legal, Medical).
+
+### Why "Edge" Matters
+Modern platforms like **Vercel** allow you to run AI logic at the "Edge"—servers physically close to your user. This reduces the time it takes for a message to travel, making your agent feel snappy and responsive.
+
+> **Deployment Rule #1:** Never ship without **Logging**. You cannot fix what you cannot see. Use tools like LangSmith or Helicone to audit every single "thought" your agent has in the wild.

@@ -1,0 +1,73 @@
+---
+title: "AI Memory & Context"
+description: "Understanding how AI remembers what you said and the limits of its memory."
+duration: "25 min"
+humanModeContent: "AI memory is like a desk. The 'Context Window' is how big the desk is. Once the desk is full of papers (words), the AI has to throw the oldest ones away to make room for new ones."
+examples: |
+  ### Case Study 1: The Infinite Chat Loop
+  A customer support bot is helping a user troubleshoot a router. After 50 messages, the user mentions their original serial number again. If the model's **Context Window** is too small, it will have "forgotten" that serial number because it was at the very beginning of the chat and has been pushed out by newer messages.
+  
+  ### Case Study 2: Analyzing a 1,000 Page PDF
+  A financial analyst needs to find a specific clause in a 1,000-page merger agreement. Since the agreement is 400,000 tokens and the model only has a 128,000 token window, the analyst must use **RAG (Retrieval Augmented Generation)** to feed the model only the most relevant pages.
+  
+  ### Case Study 3: Large Context Window Advantage
+  A developer uses Gemini 1.5 Pro (which has a 2-million token window) to upload their *entire* codebase (50,000 files). Because everything fits in the window at once, the AI can find bugs that involve multiple distant files without needing any extra search tools.
+quiz:
+  - question: "What happens when an AI's Context Window is full?"
+    options: ["It stops working", "It creates more space automatically", "It forgets the oldest information to make room for the new", "It deletes your account"]
+    correctAnswer: 2
+    explanation: "Most LLMs use a FIFO (First-In, First-Out) approach, dropping the earliest part of the conversation when the limit is reached."
+  - question: "Roughly how many words are in 1,000 tokens?"
+    options: ["1,000 words", "750 words", "100 words", "5,000 words"]
+    correctAnswer: 1
+    explanation: "A good rule of thumb is that 1,000 tokens is approximately equal to 750 words of English text."
+  - question: "What is RAG (Retrieval Augmented Generation) primarily used for?"
+    options: ["Making the AI faster", "Feeding the AI relevant info that exceeds its context window", "Changing the AI's personality", "Translating text into different languages"]
+    correctAnswer: 1
+    explanation: "RAG allows you to search through massive datasets and only send the most relevant snippets to the AI's limited context window."
+  - question: "If a model has a 128k context window, how much can it 'remember'?"
+    options: ["Everything it has ever been told", "Roughly 300 pages of text", "Only the last sentence", "Exactly 1,000 words"]
+    correctAnswer: 1
+    explanation: "128,000 tokens is roughly equivalent to 300 pages of single-spaced text."
+  - question: "Why is 'summarization' a common strategy for long conversations?"
+    options: ["To make it easier for humans to read", "To condense information so it stays within the context window longer", "To save on electricity", "Because the AI prefers shorter sentences"]
+    correctAnswer: 1
+    explanation: "Summarizing previous parts of a conversation allows you to keep the most important context in the window using fewer tokens."
+  - question: "What is the primary benefit of a 2-million token context window (like Gemini 1.5 Pro)?"
+    options: ["It makes the AI smarter", "It allows you to upload entire codebases or long videos as a single context", "It is cheaper", "It makes the AI faster"]
+    correctAnswer: 1
+    explanation: "Massive context windows allow the model to reason over huge amounts of data simultaneously without needing retrieval tools."
+  - question: "Which of these is a common 'Symptom' of a full context window?"
+    options: ["The AI starts speaking in a different language", "The AI 'forgets' instructions given at the very start of the session", "The AI asks for more money", "The AI reboots your computer"]
+    correctAnswer: 1
+    explanation: "Because of FIFO logic, the earliest instructions (like the System Prompt) can eventually be pushed out if the conversation goes too long."
+  - question: "How does RAG (Retrieval Augmented Generation) save tokens?"
+    options: ["It compresses the text", "It only sends the most relevant snippets of data to the AI instead of the whole document", "It uses a special font", "It skips every other word"]
+    correctAnswer: 1
+    explanation: "RAG selects only the 3-5 most relevant chunks of information, keeping the context window lean and focused."
+  - question: "What is a 'Knowledge Cutoff'?"
+    options: ["The end of a book", "The date when a model's training data ends", "A type of internet filter", "The model's maximum word count"]
+    correctAnswer: 1
+    explanation: "Models are trained on data up to a certain date. They don't 'know' about events after that unless you provide the info in the prompt."
+  - question: "In the 'Desk Analogy', what does the 'Papers' represent?"
+    options: ["The AI's hardware", "The individual words or tokens of information", "The physical desk", "The office building"]
+    correctAnswer: 1
+    explanation: "In the analogy, tokens are the papers on the desk. Once the desk (window) is full, you have to discard old papers to add new ones."
+---
+
+# AI Memory & Context
+
+Unlike humans, AI models don't have a "long-term memory" that they update in real-time. Instead, they have a **Context Window**.
+
+## What is a Context Window?
+The Context Window is the amount of information the AI can "keep in its head" at any given moment. This includes your current conversation and any documents you've uploaded.
+
+### Token Limits
+Memory is measured in **Tokens** (roughly 0.75 words). 
+- GPT-4o has a window of ~128,000 tokens.
+- Gemini 1.5 Pro has a window of up to 2,000,000 tokens.
+
+### What Happens when the Window is Full?
+The model uses a "First-In, First-Out" (FIFO) approach. It forgets the beginning of the conversation to make room for your latest message.
+
+> **Crucial Concept:** This is why "summarization" is so important in AI automation—it helps keep the most important info inside the window.

@@ -1,0 +1,58 @@
+---
+title: "Agentic Error Handling"
+description: "Mastering the 'How' of building resilient agents that can recover from tool failures and logic loops."
+duration: "90 min"
+trackId: "builder"
+examples: |
+  ### Case Study 1: The Tool-Failure Recovery
+  An agent tries to search the web using an API, but the API is down (Status 500). 
+  **Resilient Strategy:** The code catches the error and sends it to the AI: "The WebSearch tool is currently unavailable." The AI then decides to use its internal knowledge or tries a different search tool (like Google Search via a different API).
+
+  ### Case Study 2: The Loop Breaker
+  An agent is trying to find a file but keeps looking in the wrong directory. It has tried the same command 5 times.
+  **Resilient Strategy:** A **Loop Detector** in the code sees the repeated behavior and interrupts: "You have tried this action 5 times without success. Please stop and try a completely different strategy."
+
+  ### Case Study 3: The Validation Layer
+  An agent outputs a JSON object that is missing a required field ('price').
+  **Resilient Strategy:** The system validates the output against a schema. If it fails, it sends the validation error back to the AI: "Your output was missing the 'price' field. Please provide it." The AI fixes the object and continues.
+humanModeContent: "When standard code fails, it just gives up and shows an error. When an AI agent fails, it can actually 'understand' why it failed and try a different way to fix it. This lesson teaches you how to give your agents that resilience."
+quiz:
+  - question: "What is 'Self-Correction' in an agentic system?"
+    options: ["The AI apologizing", "Feeding a tool's error message back into the AI so it can try a different approach", "The computer rebooting", "Deleting the agent"]
+    correctAnswer: 1
+    explanation: "If a tool fails, the AI can read the error (e.g., 'Invalid File Path') and attempt to fix the input (e.g., 'Try searching a different folder')."
+  - question: "What is a 'Circuit Breaker' for agents?"
+    options: ["A physical power switch", "A code mechanism that stops an agent if it fails too many times in a row to prevent wasted tokens", "A type of firewall", "A fast AI model"]
+    correctAnswer: 1
+    explanation: "Circuit breakers prevent an agent from repeatedly calling a failing service, saving money and preventing server overload."
+  - question: "How does 'Validation' work for agent outputs?"
+    options: ["The user checks every word", "The system uses a schema (like JSON Schema) to verify the AI's output is structured correctly before acting on it", "The AI validates itself", "There is no validation"]
+    correctAnswer: 1
+    explanation: "External validation ensures the AI isn't 'hallucinating' data structures that would break your backend code."
+  - question: "What is the 'Reflection' pattern?"
+    options: ["The AI looking in a mirror", "Asking the AI to review its own previous plan for potential errors before executing it", "A type of light effect", "A memory cleanup process"]
+    correctAnswer: 1
+    explanation: "Reflection steps (e.g., 'Review your proposed SQL query for security risks') significantly improve the safety and accuracy of agents."
+  - question: "What is a 'Silent Failure' in an agent?"
+    options: ["When the AI is too quiet", "When the agent returns a plausible-sounding but completely wrong result without any technical error", "When the internet goes down", "When the model is free"]
+    correctAnswer: 1
+    explanation: "Silent failures are the hardest to debug because the code doesn't 'crash', but the business outcome is incorrect. Logic validation is the only cure."
+---
+
+# Agentic Error Handling
+
+In agent engineering, **resilience is more important than intelligence.**
+
+## Designing for Failure
+Most developers build for the "Happy Path"—when everything works perfectly. In production, tools fail, models hallucinate, and internet connections drop.
+
+### The Resilient Agent's Workflow:
+1. **The Attempt:** Agent tries an action.
+2. **The Catch:** The code catches any technical or logic error.
+3. **The Feedback:** The error is sent to the AI in plain English.
+4. **The Recovery:** The AI reasons about the error and adjusts its plan.
+
+## The 'Self-Healing' System
+By implementing these patterns, you create systems that can fix themselves in real-time. If an agent tries to use an outdated library, it can read the "Module Not Found" error, look up the new library, and update its own code.
+
+> **Crucial Rule:** Never let an agent fail silently. Always provide the model with the 'Truth' of what went wrong.

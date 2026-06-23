@@ -1,0 +1,65 @@
+---
+title: "Multi-Agent Systems"
+description: "Coordinating a 'Squad' of specialized agents to solve problems that are too complex for a single AI."
+duration: "150 min"
+trackId: "builder"
+examples: |
+  ### Case Study 1: The Content Marketing Squad
+  - **Agent A (Researcher):** Finds trending topics and sources.
+  - **Agent B (Writer):** Drafts the blog post based on the research.
+  - **Agent C (Editor):** Reviews the post for SEO and brand voice.
+  - **Orchestrator:** Manages the flow between the three.
+
+  ### Case Study 2: The Software Development Team
+  - **Agent A (Architect):** Breaks down the feature into small tasks.
+  - **Agent B (Coder):** Writes the actual code for each task.
+  - **Agent C (Tester):** Writes and runs unit tests for the code.
+  - **Agent D (Reviewer):** Performs a code review and suggests fixes.
+
+  ### Case Study 3: The Financial Audit Team
+  - **Agent A (Data Extractor):** Pulls numbers from bank statements (PDFs).
+  - **Agent B (Categorizer):** Matches transactions to the chart of accounts.
+  - **Agent C (Anomaly Detector):** Flags any transaction that looks suspicious or out of policy.
+humanModeContent: "Multi-agent systems are like a professional kitchen. Instead of one chef trying to do everything, you have a specialist for the sauce, a specialist for the meat, and a specialist for the desserts. This makes the whole operation faster and higher quality."
+quiz:
+  - question: "Why use multiple agents instead of one big one?"
+    options: ["It's cheaper", "Specialized agents are more accurate and handle complex tasks better by breaking them down", "It's faster to code", "Models like to talk to each other"]
+    correctAnswer: 1
+    explanation: "By giving each agent a narrow focus (specialization), you reduce the 'Cognitive Load' on the model, leading to fewer errors."
+  - question: "What is an 'Orchestrator'?"
+    options: ["A type of musical instrument", "A central controller that manages the task distribution and communication between agents", "A fancy word for a prompt", "The person using the computer"]
+    correctAnswer: 1
+    explanation: "The Orchestrator acts like a manager, deciding which specialized agent should handle which part of the goal."
+  - question: "What is 'Agent-to-Agent' communication?"
+    options: ["Two robots talking", "The structured exchange of data and instructions between different specialized agents", "A type of internet cable", "A security risk"]
+    correctAnswer: 1
+    explanation: "Standardized communication (often using JSON) allows one agent's output to become the next agent's input seamlessly."
+  - question: "What is the 'Manager-Worker' pattern?"
+    options: ["A type of office furniture", "A structure where one agent assigns tasks and verifies the work of several 'worker' agents", "A way to save money", "An old management style"]
+    correctAnswer: 1
+    explanation: "In this pattern, the Manager agent handles the 'Planning' and 'Quality Control', while the Workers handle the 'Execution'."
+  - question: "What is a 'Consensus' mechanism in multi-agent systems?"
+    options: ["Voting on a movie", "Asking multiple agents the same question and comparing their answers for accuracy", "A type of encryption", "A way to speed up the AI"]
+    correctAnswer: 1
+    explanation: "Consensus (or Debate) patterns improve reliability by having multiple agents verify each other's reasoning or work."
+---
+
+# Multi-Agent Systems
+
+When a task is too big for one brain, you build a **Squad**.
+
+## The Power of Specialization
+If you ask a single agent to "Build a Marketing Campaign," it has to do 100 different things. It will eventually lose track, hallucinate, or get overwhelmed.
+
+In a **Multi-Agent System**, you assign specific "Roles" to different agents:
+- **The Planner:** Breaks the big goal into small steps.
+- **The Executor:** Performs the actual work.
+- **The Critic:** Reviews the work for errors.
+
+### Why Squads Outperform Individuals:
+1. **Focus:** Each agent has a very small, specific system prompt.
+2. **Quality Control:** Agents can check each other's work.
+3. **Resilience:** If one agent fails, the orchestrator can retry just that step.
+
+## Collaborative Intelligence
+You are no longer just building a bot; you are building an **Organization of Intelligence**. 

@@ -1,0 +1,55 @@
+---
+title: "RAG & Vector Data"
+description: "How to give AI a 'Long-term Memory' by connecting it to your own private documents."
+duration: "90 min"
+trackId: "intermediate"
+examples: |
+  ### Case Study 1: The Legal Researcher
+  A law firm has 50,000 past case files. Instead of a lawyer reading through them all, they ask the AI: 'Have we ever seen a case involving a tenant dispute in Oregon with a broken heater?'
+  1. **Retrieval:** The system finds the 3 most relevant Oregon cases.
+  2. **Generation:** The AI summarizes how those cases were settled.
+
+  ### Case Study 2: The Customer Support Guru
+  A software company has a 500-page technical manual. When a user asks: "How do I configure the API for a multi-tenant environment?", the RAG system finds the specific 'Configuration' chapter and provides a step-by-step guide with the user's actual account ID pre-filled.
+
+  ### Case Study 3: The Personalized Onboarding
+  A SaaS platform uses RAG to read a user's previous support tickets and usage data. When the user logs in, the AI greets them: "Welcome back! I see you were struggling with the Dashboard filters last week. I've retrieved a guide on 'Advanced Filtering' based on your specific industry data."
+humanModeContent: "RAG is like giving the AI a library card. Instead of it trying to remember everything from its training, it can look up the exact facts it needs from your documents in real-time."
+quiz:
+  - question: "What does RAG stand for?"
+    options: ["Reasoning and Generation", "Retrieval-Augmented Generation", "Random Access Gateway", "Rapid Automated Growth"]
+    correctAnswer: 1
+    explanation: "RAG stands for Retrieval-Augmented Generation."
+  - question: "Why are 'Vectors' used in RAG?"
+    options: ["To make the AI faster", "To store the mathematical 'meaning' of text for better searching", "To replace standard databases", "To encrypt the data"]
+    correctAnswer: 1
+  - question: "What is 'Grounding' in AI?"
+    options: ["Punishing the AI", "Ensuring the AI's response is based on specific, provided evidence (like a document)", "Connecting the AI to a wire", "Making the AI's text smaller"]
+    correctAnswer: 1
+    explanation: "Grounding uses RAG to provide 'Ground Truth' facts to the model, preventing it from relying on its own potentially outdated or incorrect training data."
+  - question: "What is 'Semantic Search'?"
+    options: ["Searching by keyword only", "Searching based on the meaning and intent behind a query", "Searching in alphabetical order", "Searching for images only"]
+    correctAnswer: 1
+    explanation: "Semantic search uses vector math to find information that is conceptually related to the user's question, even if the exact words don't match."
+  - question: "Why does RAG help prevent hallucinations?"
+    options: ["It makes the AI smarter", "It provides the model with external facts to reference instead of it having to 'guess'", "It is a type of medicine", "It speeds up the processing"]
+    correctAnswer: 1
+    explanation: "Hallucinations often occur when a model tries to fill in gaps in its knowledge. RAG fills those gaps with your actual business data."
+---
+
+# RAG & Vector Data
+
+**Retrieval-Augmented Generation (RAG)** is how we move from "Generic AI" to "Business-Specific AI."
+
+## The RAG Workflow
+1. **The Question:** The user asks something specific to your company.
+2. **The Retrieval:** The system searches a **Vector Database** for the most relevant document chunks.
+3. **The Augmentation:** The system stuffs those chunks into the prompt (as "Context").
+4. **The Generation:** The AI answers based **only** on the retrieved data.
+
+### Why Vectors?
+Traditional databases look for exact matches (e.g., search for "Apple" finds "Apple"). 
+Vector databases look for **meaning** (e.g., search for "Fruit" might find "Apple", "Banana", and "Orange").
+
+## Grounding the AI
+RAG is the #1 cure for AI hallucinations. By forcing the model to "Look it up" before it speaks, we ensure the answers are grounded in your actual business facts, not just probabilistic guesses.

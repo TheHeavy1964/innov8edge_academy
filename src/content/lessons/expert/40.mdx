@@ -1,0 +1,64 @@
+---
+title: "Scaling Your AI Workforce"
+description: "Moving from one AI tool to a coordinated AI workforce — architecture patterns, cost optimization, and organizational structures for AI at scale."
+duration: "90 min"
+humanModeContent: "One AI agent is a tool. Ten AI agents working in coordination is a workforce. Scaling AI isn't just adding more tools — it's building the architecture, cost controls, and organizational structure to make dozens of agents work together reliably without your infrastructure bill becoming a second rent payment."
+examples: |
+  ### Case Study 1: The Token Budget Crisis
+  A startup built an impressive multi-agent research system. Each research request spun up 6 agents, each making 10 LLM calls. Cost per request: $4.20. At 500 requests/day, they were spending $63,000/month on AI. Architectural changes — caching frequent queries, routing simple requests to cheaper models, batching non-urgent tasks — reduced cost to $8,400/month. Same output. 87% cost reduction.
+
+  ### Case Study 2: The Shared Memory Architecture
+  A 20-agent content production system had each agent maintaining its own context independently. Agents frequently contradicted each other's outputs. By introducing a shared "state store" (a simple database all agents could read and write to), consistency improved and the total context processing cost dropped 60% — agents no longer re-processed the same background information independently.
+
+  ### Case Study 3: The Model Routing Strategy
+  A legal AI system used GPT-4 for every task, including simple formatting and classification tasks. By implementing a router that sent simple tasks to GPT-4o-mini and complex reasoning to GPT-4, average cost per task dropped 71% with less than 2% quality impact on the tasks routed to the cheaper model.
+quiz:
+  - question: "What is 'model routing' and why is it important for AI cost optimization?"
+    options: ["Routing network traffic to AI servers", "Sending different types of tasks to different AI models based on complexity — using cheaper models for simple tasks and expensive models only when necessary", "Routing user requests to different teams", "A load balancing technique for web traffic"]
+    answer: 1
+    explanation: "Not all tasks require GPT-4. Routing simple classification, formatting, or retrieval tasks to cheaper models (GPT-4o-mini, Claude Haiku) can reduce costs 70-90% with minimal quality impact."
+  - question: "What is a 'shared state store' in a multi-agent architecture?"
+    options: ["A physical storage room for AI hardware", "A centralized data store all agents can read and write to, enabling coordination, avoiding contradictions, and reducing redundant context processing", "The AI model's internal memory", "A backup system for AI outputs"]
+    answer: 1
+    explanation: "Without shared state, agents work in isolation and contradict each other. A shared state store (database, vector store, or key-value cache) gives all agents a consistent view of the world."
+  - question: "What is 'semantic caching' and how does it reduce AI infrastructure costs?"
+    options: ["Caching web pages for faster loading", "Storing AI responses and reusing them for semantically similar future queries — avoiding redundant LLM calls for questions that have essentially the same meaning", "Compressing AI model weights", "Caching user login sessions"]
+    answer: 1
+    explanation: "If 1,000 users ask semantically identical questions ('What's your return policy?', 'How do returns work?'), semantic caching serves the cached response instead of making 1,000 LLM calls — reducing cost and latency."
+  - question: "What is a 'token budget' and why should every AI agent have one?"
+    options: ["The number of tokens an AI can have for free", "A maximum token allowance per request or per time period that prevents runaway costs from loops, verbose prompts, or unexpected traffic spikes", "The AI vendor's pricing plan", "The maximum context length of the model"]
+    answer: 1
+    explanation: "Without token budgets, a single misconfigured agent or unexpected traffic spike can generate thousands of dollars in API costs overnight. Hard limits per request and per time period are essential cost controls."
+  - question: "What organizational structure best supports AI at scale?"
+    options: ["No structure — AI manages itself", "A Center of Excellence (CoE) that sets standards, manages shared infrastructure, and supports business units building their own AI solutions", "Every team operates completely independently", "A single AI team that builds everything for everyone"]
+    answer: 1
+    explanation: "An AI Center of Excellence balances standardization (shared tools, security, governance) with decentralization (business units own their use cases). This avoids both the bottleneck of centralization and the chaos of full decentralization."
+---
+
+## Architecture Patterns for Scaled AI
+
+### Pattern 1: The Hub-and-Spoke
+One orchestrator agent coordinates multiple specialist agents. The orchestrator receives tasks, decomposes them, and delegates to specialists (researcher, writer, reviewer, publisher).
+- **Best for:** Complex workflows with distinct, predictable subtasks
+- **Risk:** Single point of failure at the orchestrator
+
+### Pattern 2: The Pipeline
+Agents process tasks sequentially — each agent transforms the output of the previous.
+- **Best for:** Content production, data processing, document transformation
+- **Risk:** Error propagation — a bad output in step 2 corrupts all downstream steps
+
+### Pattern 3: The Peer Network
+Agents collaborate without a central orchestrator, using shared state and messaging.
+- **Best for:** Research tasks, adversarial review (agent A writes, agent B critiques)
+- **Risk:** Coordination complexity, potential for contradiction
+
+## Cost Optimization Playbook
+
+| Strategy | Cost Reduction | Complexity |
+|---------|---------------|-----------|
+| Model routing (GPT-4 → mini for simple tasks) | 60-90% | Low |
+| Semantic caching | 30-60% | Medium |
+| Prompt compression | 20-40% | Low |
+| Async/batch for non-urgent tasks | 30-50% | Medium |
+| Context pruning (remove old conversation) | 20-35% | Low |
+| Token budgets per request | Prevents spikes | Low |

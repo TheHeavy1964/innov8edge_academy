@@ -1,0 +1,74 @@
+---
+title: "Monitoring & Observability"
+description: "Build the 'nervous system' for your AI workforce — dashboards, alerts, and traces that tell you exactly what your agents are doing and why."
+duration: "60 min"
+humanModeContent: "If your AI agent fails silently and no one sees the error log, did it actually fail? The answer is yes — and it probably cost you money or a client. Monitoring is the difference between discovering a problem after a customer complains and catching it 10 minutes after it started."
+examples: |
+  ### Case Study 1: The RAG Retrieval Collapse
+  A legal AI's RAG system began returning irrelevant documents after a vector database schema change. The AI continued answering questions confidently, but with wrong context. No monitoring meant no alert. A client received an incorrect legal summary. With retrieval confidence scoring on a dashboard, this would have been flagged within minutes.
+
+  ### Case Study 2: The Token Cost Explosion
+  A startup's AI customer service agent started using 3x more tokens per conversation after a prompt change. No cost monitoring was set up. They discovered the issue when their monthly OpenAI bill was $4,200 instead of the expected $800. A simple token-per-conversation alert set at 150% of baseline would have fired on day 1.
+
+  ### Case Study 3: The Reasoning Trace Audit
+  A healthcare company's AI triage system was flagging too many cases as "urgent." The team used reasoning trace logging to replay exactly what data and logic the AI used for each flagged case. They identified a specific prompt instruction that was over-weighting symptom duration. Without trace logging, this diagnosis would have taken weeks of guesswork.
+quiz:
+  - question: "What is the difference between 'monitoring' and 'observability' in AI systems?"
+    options: ["They are the same thing", "Monitoring tracks known metrics (latency, error rate). Observability lets you explore unknown behaviors by examining traces, logs, and reasoning chains", "Observability is only for debugging, monitoring is for production", "Monitoring requires special hardware"]
+    answer: 1
+    explanation: "Monitoring answers 'Is something wrong?' Observability answers 'Why is something wrong?' — giving you the tools to investigate novel failures you didn't predict."
+  - question: "What is a 'reasoning trace' and why is it valuable for AI ops?"
+    options: ["A drawing of the AI's thought process", "A logged record of the steps, data, and decisions an AI agent took to reach a specific output", "The AI's memory storage", "A network packet trace"]
+    answer: 1
+    explanation: "Reasoning traces let you replay exactly what an agent did and why — making debugging, auditing, and compliance much faster than trying to reverse-engineer from inputs and outputs alone."
+  - question: "What metric should you monitor to detect RAG quality degradation?"
+    options: ["The color of the user interface", "Retrieval confidence scores and answer-to-source relevance ratings over time", "Server CPU usage", "The length of each response"]
+    answer: 1
+    explanation: "RAG quality degrades when retrieved documents are no longer relevant to the query. Confidence scores and relevance ratings, trended over time, will show degradation before users notice."
+  - question: "What is a 'p95 latency' metric and why does it matter for AI agents?"
+    options: ["The performance of 95 agents", "The response time below which 95% of requests complete — capturing worst-case user experience better than average latency alone", "A 95-point quality score", "The cost per 95 tokens"]
+    answer: 1
+    explanation: "Average latency hides outliers. p95 (95th percentile) latency tells you what your slowest-but-typical users experience — which is often where AI timeout and user satisfaction issues hide."
+  - question: "What should an AI alert immediately fire on in a production system?"
+    options: ["Any request that takes longer than 1 second", "Error rate exceeding a pre-defined threshold, or a key metric dropping more than X% below the 7-day baseline", "Every single API call", "Whenever a new user signs up"]
+    answer: 1
+    explanation: "Alerts fire on statistically meaningful deviations from baseline — not on individual events. Threshold-based and baseline-comparison alerts minimize false positives while catching real incidents."
+---
+
+## The Four Pillars of AI Observability
+
+### 1. Performance Metrics (The "What")
+Track quantitative system health:
+- **Latency:** p50, p95, p99 response times
+- **Throughput:** Requests per minute at peak load
+- **Error Rate:** Percentage of failed requests
+- **Token Economics:** Cost per conversation, tokens per task
+
+### 2. Quality Metrics (The "How Well")
+Track AI output quality over time:
+- **RAG Retrieval Confidence:** Are retrieved documents relevant?
+- **Answer Grounding Rate:** What % of answers cite source documents?
+- **Hallucination Rate:** Measured via sampling + human review
+- **Task Completion Rate:** Did the agent achieve the user's goal?
+
+### 3. Reasoning Traces (The "Why")
+Replay agent decision-making step by step:
+- Log every tool call with inputs, outputs, and timestamps
+- Record which documents were retrieved and their relevance scores
+- Capture the full reasoning chain for auditable decision-making
+
+### 4. Business Impact Metrics (The "So What")
+Connect AI performance to outcomes:
+- **Deflection Rate:** % of issues resolved without human escalation
+- **Customer Satisfaction:** CSAT scores correlated to AI interactions
+- **Time Saved:** Hours per week recovered from automated tasks
+- **Cost per Resolution:** AI cost vs. human cost for same task
+
+## Your Monitoring Stack
+
+| Layer | Tool Category | Example |
+|-------|--------------|---------|
+| Infrastructure | Cloud monitoring | Datadog, CloudWatch |
+| LLM observability | AI-specific tracing | LangSmith, Langfuse, Helicone |
+| Cost tracking | Token economics | OpenAI dashboard, custom |
+| Quality | Eval pipelines | Braintrust, Promptfoo |

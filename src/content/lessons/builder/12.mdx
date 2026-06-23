@@ -1,0 +1,83 @@
+---
+title: "Ethical AI & Governance"
+description: "Master the responsibility of AI: Bias, safety, transparency, and the future of human-AI collaboration."
+duration: "45 min"
+humanModeContent: "AI ethics is about building agents that are helpful and fair. It's like teaching your AI to have 'good manners' and making sure it doesn't accidentally do something harmful or biased."
+examples: |
+  ### Case Study 1: The Bias-Aware Recruiter
+  A tech company uses an AI to screen resumes. During testing, they realize the AI is favoring men for engineering roles because the training data (historical hires) was biased.
+  **Governance Solution:** The team implements a 'Neutralizer' layer that removes gender-identifying information before the AI sees the resume, ensuring a fair evaluation.
+  
+  ### Case Study 2: The Transparent Medical Diagnostic
+  A doctor uses AI to help identify rare diseases. Instead of just giving a 'Yes/No', the AI provides the medical papers it used to reach the conclusion.
+  **Governance Solution:** This is **Explainable AI (XAI)**. It ensures the doctor remains the 'Decision Maker' and can verify the AI's logic.
+  
+  ### Case Study 3: The Data Privacy Vault
+  A bank uses AI to process customer loans. 
+  **Governance Solution:** They use **Local LLMs** and 'Data Masking' so that no sensitive customer data (SSNs, addresses) ever leaves the bank's secure internal network.
+quiz:
+  - question: "What is 'AI Bias'?"
+    options: ["The AI being happy", "When an AI makes unfair decisions based on flaws or prejudices in its training data", "A type of internet connection", "The speed of the AI"]
+    correctAnswer: 1
+    explanation: "AI learns from the past. If the past was biased, the AI will be biased unless we actively correct it."
+  - question: "What is 'Explainable AI' (XAI)?"
+    options: ["AI that can talk", "AI that provides clear reasoning and sources for its decisions, allowing humans to audit its logic", "A type of movie", "AI that is very easy to use"]
+    correctAnswer: 1
+    explanation: "Transparency is key. We shouldn't trust 'Black Box' AI that can't explain *why* it reached a certain conclusion."
+  - question: "What is 'Human-in-the-loop' (HITL)?"
+    options: ["A human trapped in a computer", "A process where a human must review and approve an AI's action before it happens", "A type of treadmill", "The person who built the AI"]
+    correctAnswer: 1
+    explanation: "HITL is the ultimate safety guardrail. For high-stakes decisions (money, health, law), a human should always have the final word."
+  - question: "What is 'Data Sovereignty'?"
+    options: ["Hiring a king", "The principle that data is subject to the laws and governance of the country where it is collected", "A type of server", "A new model"]
+    correctAnswer: 1
+    explanation: "Privacy laws (like GDPR) mean you must be careful where you store and process user data, especially when using US-based AI providers."
+  - question: "What is a 'Hallucination' in an ethical context?"
+    options: ["The AI being creative", "When an AI confidently provides false information that could be harmful if trusted", "A type of dream", "A computer virus"]
+    correctAnswer: 1
+    explanation: "Hallucinations aren't just bugs—they are safety risks. An AI giving 'confidently wrong' medical or legal advice is a major ethical concern."
+  - question: "What is 'Adversarial Prompting'?"
+    options: ["Asking nicely", "Techniques used to trick an AI into ignoring its safety rules (e.g., 'Jailbreaking')", "A type of training", "A hardware update"]
+    correctAnswer: 1
+    explanation: "Governance involves testing your AI against 'bad actors' who try to make it produce harmful content or leak data."
+  - question: "What is the 'Black Box' problem?"
+    options: ["A piece of hardware", "When the internal logic of an AI is so complex that even its creators can't explain exactly how it reached a decision", "A type of database", "A mistake in the code"]
+    correctAnswer: 1
+    explanation: "Deep learning models are often 'Black Boxes'. Part of AI ethics is moving toward more transparent and interpretable models."
+  - question: "What is 'Algorithmic Accountability'?"
+    options: ["The AI going to jail", "The principle that organizations are responsible for the decisions and impacts of the AI they deploy", "A type of math", "A new law"]
+    correctAnswer: 1
+    explanation: "If an AI causes harm, the company that deployed it is responsible. You cannot 'blame the algorithm'."
+  - question: "What is 'Privacy-Preserving AI'?"
+    options: ["AI that doesn't have a camera", "Techniques (like Federated Learning or Masking) that allow AI to learn from data without seeing the private details", "AI that is secret", "A type of filter"]
+    correctAnswer: 1
+    explanation: "You can build smart systems without sacrificing privacy by using encryption and local processing."
+  - question: "What is the goal of 'AI Governance'?"
+    options: ["To ban AI", "To create a framework of rules, safety checks, and audits to ensure AI is used responsibly", "To make AI faster", "To make AI cheaper"]
+    correctAnswer: 1
+    explanation: "Governance isn't about stopping AI; it's about steering it toward a future that is safe, fair, and beneficial for everyone."
+---
+
+# Ethical AI & Governance
+
+As an AI Builder, you have a responsibility. You aren't just writing code; you are building systems that make decisions. **Governance** is the framework you use to ensure those decisions are safe.
+
+## The Pillars of Responsibility
+
+1. **Transparency:** Can you explain how the agent reached its goal?
+2. **Fairness:** Does the system work equally well for everyone, or does it have hidden biases?
+3. **Safety:** What happens if the agent fails or is tricked?
+4. **Privacy:** Are you protecting the user's data, or is it leaking into a training set?
+
+### Moving Toward Human-AI Collaboration
+The future isn't about AI replacing humans—it's about **Augmentation**. 
+- AI handles the high-volume, repetitive data processing.
+- Humans handle the high-level strategy, ethics, and final approvals.
+
+### Your Ethics Checklist:
+- [ ] Have I tested for bias in my training data?
+- [ ] Does my agent provide sources for its claims?
+- [ ] Is there a 'Kill Switch' or 'Human-in-the-loop' for sensitive actions?
+- [ ] Is the user informed that they are interacting with an AI?
+
+> **Final Thought:** Technology is never neutral. The values you program into your agent today will define the impact it has on the world tomorrow.

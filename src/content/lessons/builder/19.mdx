@@ -1,0 +1,56 @@
+---
+title: "Agentic Governance & Guardrails"
+description: "Building autonomous systems that are powerful but strictly contained within safety boundaries."
+duration: "90 min"
+trackId: "builder"
+examples: |
+  ### Case Study 1: The Database 'ReadOnly' Guardrail
+  A data-analysis agent is given access to a production database. To prevent disaster, the developer implements a **Permission Guardrail** at the database level: the agent's API key is restricted to `SELECT` queries only. It can read and analyze, but never `DELETE` or `DROP` tables.
+
+  ### Case Study 2: The Budget Kill-Switch
+  An autonomous research agent is tasked with a complex project. To prevent runaway costs, the architect sets a **Token Limit Guardrail**. If the agent exceeds $5.00 in API costs for a single task, the 'Kill-Switch' is triggered, and the agent pauses for human review.
+
+  ### Case Study 3: The PII Redactor
+  A customer-facing agent is designed to help with support tickets. Before the agent sends its response to the user, a **Sanitization Guardrail** checks the output for any internal names, private IP addresses, or secret API keys that the agent might have accidentally included in its reasoning.
+humanModeContent: "Governance is like putting a leash on a powerful dog. You want the agent to be able to run and help you, but you need 'hard boundaries' so it doesn't run into traffic or go somewhere it's not allowed."
+quiz:
+  - question: "What is a 'Hard Boundary' in agentic governance?"
+    options: ["A suggestion for the AI", "A technical restriction (like API permissions) that the agent cannot override", "A long prompt", "A type of firewall"]
+    correctAnswer: 1
+    explanation: "Hard boundaries are enforced by code or infrastructure, ensuring that even if an agent 'wants' to do something restricted, it physically cannot."
+  - question: "Why implement a 'Kill-Switch'?"
+    options: ["To make the AI angry", "To stop an agent if it enters an infinite loop or exceeds a set budget", "To delete the agent's memory", "To speed up the process"]
+    correctAnswer: 1
+    explanation: "Kill-switches are safety triggers that terminate an agentic process when specific risk thresholds (cost, time, or behavior) are met."
+  - question: "What is 'Least Privilege' for agents?"
+    options: ["Giving agents the worst tools", "Giving an agent ONLY the minimum permissions it needs to complete its specific task", "Making the agent work for free", "Ignoring the agent's requests"]
+    correctAnswer: 1
+    explanation: "Least Privilege reduces the 'Blast Radius'—if an agent is compromised or makes a mistake, it can only affect the specific area it has access to."
+  - question: "Which of these is a 'Governance' strategy?"
+    options: ["Writing a longer prompt", "Implementing a human-in-the-loop approval for all financial transactions", "Using a more expensive model", "Buying more data"]
+    correctAnswer: 1
+    explanation: "Governance involves the policies and technical controls that ensure agents act safely and align with business rules."
+  - question: "What is a 'Reasoning Trace' audit?"
+    options: ["Watching the AI type", "Reviewing the step-by-step logs of how an agent reached a decision", "A type of legal contract", "Checking the internet speed"]
+    correctAnswer: 1
+    explanation: "Auditing the reasoning trace allows humans to understand 'why' an agent took an action, which is critical for identifying and fixing logic failures."
+---
+
+# Agentic Governance & Guardrails
+
+As you build more autonomous agents, your role shifts from **Coder** to **Governor**.
+
+## The Illusion of Control
+You cannot rely on a "System Prompt" alone to keep an agent safe. Prompts can be ignored or bypassed (Prompt Injection). True governance requires **Technical Constraints**.
+
+### Core Governance Pillars:
+1. **Permissions:** Restricting what the agent CAN do at the API level.
+2. **Budgets:** Limiting how many tokens or dollars the agent can spend.
+3. **Thresholds:** Requiring human approval for high-impact actions.
+4. **Monitoring:** Real-time visibility into the agent's thought process.
+
+## Guardrails vs. Prompts
+A prompt says: *"Please do not delete files."* 
+A guardrail says: `chmod -w /data` (Removing the physical ability to write).
+
+In production, **Guardrails always win.**

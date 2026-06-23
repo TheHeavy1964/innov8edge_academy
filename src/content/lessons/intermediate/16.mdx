@@ -1,0 +1,63 @@
+---
+title: "Advanced Tool Calling"
+description: "Teaching AI to take action by mastering function calling and tool schemas."
+duration: "75 min"
+trackId: "intermediate"
+examples: |
+  ### Case Study 1: The Smart CRM Assistant
+  **User:** "Log a meeting with Bob from Acme Corp and set a reminder for Friday."
+  **AI Tool Call:** 
+  1. `log_meeting(contact: "Bob", company: "Acme")`
+  2. `create_reminder(date: "2024-05-17", text: "Follow up with Bob")`
+  **Outcome:** The AI parsed the intent and executed two distinct tool calls to separate services.
+
+  ### Case Study 2: The Real-time Researcher
+  **User:** "What is the current stock price of Apple?"
+  **AI Action:** The model recognizes it doesn't have live data. It calls `fetch_stock_price(ticker: "AAPL")`. It receives the price ($189.45) and then answers the user with the exact, up-to-the-minute figure.
+
+  ### Case Study 3: The Technical Support Bot
+  **User:** "My server is down. Check the logs for the last 5 minutes."
+  **AI Action:** The bot calls `get_server_logs(duration: "5m")`. It reads the logs, identifies a "Memory Leak" error, and suggests a specific fix based on the logs it just 'retrieved' via the tool.
+humanModeContent: "Tool calling is how we give the AI 'hands.' We teach it to use specific tools—like a calculator, a search engine, or a database—to get the job done instead of just talking about it."
+quiz:
+  - question: "What is a 'Tool Schema'?"
+    options: ["A blueprint for a physical tool", "The JSON definition that tells the AI how to use a function", "The AI's personality", "A list of every word the AI knows"]
+    correctAnswer: 1
+    explanation: "A tool schema (often in JSON) defines the name, description, and required parameters for a tool so the AI knows exactly how to invoke it."
+  - question: "Why is 'Description' the most important part of a tool definition?"
+    options: ["It makes the code look better", "It tells the LLM *when* and *why* it should use that specific tool", "It is required by the compiler", "It is for human developers only"]
+    correctAnswer: 1
+  - question: "What is an 'Action Loop'?"
+    options: ["A recursive coding error", "The process of AI deciding to use a tool, getting the result, and using that result to answer the user", "A way to make the AI repeat itself", "A type of internet connection"]
+    correctAnswer: 1
+    explanation: "The action loop allows the AI to interact with the real world (via tools) and refine its response based on real-time feedback."
+  - question: "Which format is typically used for tool calling and function schemas?"
+    options: ["XML", "JSON", "CSV", "Markdown"]
+    correctAnswer: 1
+    explanation: "JSON is the standard format for structured data exchange between LLMs and external applications."
+  - question: "How does the AI 'decide' which tool to use?"
+    options: ["It flips a coin", "It matches the user's intent to the 'Description' provided in the tool's schema", "It asks the developer", "It uses every tool at once"]
+    correctAnswer: 1
+    explanation: "The LLM compares the user's request to the descriptions of all available tools. If a description matches the intent, the AI will attempt to call that tool."
+---
+
+# Advanced Tool Calling
+
+**Tool Calling** (or Function Calling) is the bridge between reasoning and action. It allows the model to output a structured JSON object instead of just text.
+
+## The Tool Loop
+1. **User Query:** "Book a meeting for 2 PM."
+2. **AI Decision:** "I need the `create_calendar_event` tool."
+3. **Tool Call:** AI outputs `{ "tool": "calendar", "time": "14:00" }`.
+4. **Execution:** Your code runs the actual calendar function.
+5. **Observation:** Your code sends the result ("Success!") back to the AI.
+6. **Final Response:** AI tells the user: "Meeting booked for 2 PM!"
+
+### Thinking in Schemas
+To build a custom tool, you must define:
+- **Name:** `get_weather_data`
+- **Description:** "Use this when the user asks for current weather or forecasts."
+- **Parameters:** `location` (String), `units` (String: celsius/fahrenheit).
+
+## Reliability vs. Flexibility
+Advanced tool calling requires **precision**. If your schema is too vague, the AI might hallucinate parameters. If it's too rigid, the AI might not use it when it should. Mastering this balance is the key to building autonomous agents.

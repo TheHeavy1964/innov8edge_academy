@@ -1,0 +1,62 @@
+---
+title: "Human-in-the-Loop Design"
+description: "Understanding the Criticality Scale and when to require a human checkpoint in your automations."
+duration: "45 min"
+trackId: "intermediate"
+examples: |
+  ### Case Study 1: The High-Volume Invoice Gatekeeper
+  An AI extracts data from 1,000 invoices per day.
+  - **Scenario A (Autonomous):** Invoices under $500 from known vendors are paid instantly.
+  - **Scenario B (HITL):** Any invoice over $500, or from a NEW vendor, is paused. The AI sends a Slack message to the CFO with a 'Approve' or 'Reject' button.
+
+  ### Case Study 2: The Social Media Compliance Officer
+  A global brand uses AI to generate daily social media posts. While the AI is creative, it might accidentally use a banned word or a competitor's trademark. A human marketing manager must click "Schedule" on each post in the dashboard before it goes live.
+
+  ### Case Study 3: The Medical Triage Assistant
+  An AI analyzes patient symptoms to suggest a specialist. Because health is high-stakes, the AI never sends a referral directly to the specialist. Instead, it presents its findings to a Nurse Practitioner who reviews the 'Confidence Score' and confirms the referral.
+humanModeContent: "AI is smart, but it's not accountable. For important tasks like spending money or deleting data, we always want a 'Human-in-the-Loop' to give the final thumbs up."
+quiz:
+  - question: "What is the 'Criticality Scale'?"
+    options: ["A way to measure AI speed", "A framework to judge the risk of a task failing", "How much a tool costs", "A metric for server load"]
+    correctAnswer: 1
+    explanation: "The Criticality Scale helps you decide if a task is 'Low Risk' (Safe for full autonomy) or 'High Risk' (Requires human approval)."
+  - question: "Which task should likely be 'Human-in-the-Loop'?"
+    options: ["Drafting an internal meeting summary", "Sending a final invoice to a major client", "Categorizing 1,000 support tickets", "Checking the weather"]
+    correctAnswer: 1
+  - question: "What is 'Source of Accountability'?"
+    options: ["The computer's power source", "The person or entity responsible if an automation fails or makes a bad decision", "The name of a database", "A legal contract"]
+    correctAnswer: 1
+    explanation: "AI cannot be held legally or ethically accountable; therefore, a human must always be the final 'Source of Accountability' for high-impact actions."
+  - question: "When is a task 'Low Criticality'?"
+    options: ["When it involves money", "When the impact of a mistake is negligible or easily reversible", "When the AI is 100% sure", "When it is done by a robot"]
+    correctAnswer: 1
+    explanation: "Low criticality tasks (like summarizing a public article) are safe for full autonomy because the cost of failure is almost zero."
+  - question: "Why does HITL increase stakeholder trust?"
+    options: ["It makes the system cheaper", "It ensures that a human expert is still in control of important decisions", "It makes the AI faster", "It looks more professional"]
+    correctAnswer: 1
+    explanation: "Stakeholders are more comfortable with AI when they know it's a 'copilot' and not a 'rogue agent' making unvetted decisions."
+---
+
+# Human-in-the-Loop (HITL)
+
+**Autonomy is a spectrum.** The secret to safe AI deployment is knowing exactly where on that spectrum your task should live.
+
+## The Criticality Scale
+
+### 1. Low Criticality (Autonomous)
+- **Impact of Error:** Low/Negligible.
+- **Example:** Recommending a product, summarizing an internal Slack thread.
+- **Goal:** Full speed, zero intervention.
+
+### 2. Medium Criticality (Supervised)
+- **Impact of Error:** Moderate.
+- **Example:** Drafting a social media post, filtering leads.
+- **Goal:** AI does 90% of the work; human does a 10% spot check.
+
+### 3. High Criticality (Mandatory Checkpoint)
+- **Impact of Error:** Severe (Financial, Legal, Safety).
+- **Example:** Deleting database records, signing contracts, diagnosing health issues.
+- **Goal:** The AI **cannot** proceed without a manual human signature.
+
+## Designing for Trust
+By building HITL checkpoints into your workflows, you increase trust across your organization. Stakeholders are much more likely to adopt AI when they know a human is still the final "Source of Accountability."

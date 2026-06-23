@@ -1,0 +1,54 @@
+---
+title: "Data Pipeline Ethics & Privacy"
+description: "Managing the flow of sensitive data into AI systems and ensuring PII protection."
+duration: "50 min"
+trackId: "intermediate"
+examples: |
+  ### Case Study 1: The HR Privacy Shield
+  An HR AI has access to all employee files. Without a **Sanitization Layer**, a junior employee could ask the AI: 'How much does the CEO make?' With a proper pipeline, the AI either redacts the salary or refuses to retrieve the document because of the user's lower clearance level.
+
+  ### Case Study 2: The Healthcare PII Filter
+  A hospital uses AI to summarize doctor-patient consultations. Before the transcript is saved to the AI's memory, a **PII Scrubber** automatically replaces patient names, birthdates, and SSNs with generic tags (e.g., [PATIENT_NAME]). This ensures the model learns the medical logic without seeing private identity data.
+
+  ### Case Study 3: The Public-Facing Bot Constraint
+  A company builds a bot to help customers with their accounts. To prevent 'Prompt Injection' attacks that might reveal other users' data, the developers implement a **Hard Context Limit**—the AI can ONLY see data related to the specific User ID of the person currently logged in.
+humanModeContent: "Just because you can give AI all your data doesn't mean you should. We learn how to 'clean' our information so that sensitive things like credit card numbers or private addresses never end up where they shouldn't."
+quiz:
+  - question: "What is PII?"
+    options: ["Personal Intelligent Interface", "Personally Identifiable Information", "Private Internal Integration", "Public Information Index"]
+    correctAnswer: 1
+    explanation: "PII stands for Personally Identifiable Information (e.g., SSNs, phone numbers, home addresses)."
+  - question: "Why shouldn't you 'dump' raw company data into a vector store?"
+    options: ["It takes too much space", "It can expose sensitive PII in AI responses", "It makes the AI slower", "It is against the law everywhere"]
+    correctAnswer: 1
+  - question: "What is 'De-identification'?"
+    options: ["Deleting an employee's file", "Replacing specific identifiers (like names) with generic labels to protect privacy", "Changing the AI's name", "Hiding the AI's screen"]
+    correctAnswer: 1
+    explanation: "De-identification allows the AI to learn from the data patterns without ever 'seeing' the actual identity of the people involved."
+  - question: "Why is 'Attribute-Based Access Control' (ABAC) important for RAG?"
+    options: ["It makes the database faster", "It ensures users only retrieve data they are authorized to see", "It is a type of encryption", "It is required for cloud hosting"]
+    correctAnswer: 1
+    explanation: "Without access control, a junior staff member could use the RAG system to 'search' for and read confidential HR or executive documents."
+  - question: "What is the primary risk of a 'Raw Data Dump' into a vector store?"
+    options: ["The computer will run out of space", "Accidental exposure of sensitive internal secrets or PII in AI responses", "The AI will get confused by too much data", "The data will become corrupted"]
+    correctAnswer: 1
+    explanation: "A raw dump includes everything—passwords, private notes, and sensitive PII. A professional pipeline must filter these out before they become 'retrievable'."
+---
+
+# Data Pipeline Ethics
+
+RAG is powerful, but it comes with a **Privacy Responsibility**. If you automate the "Retrieval" of data, you must also automate the "Protection" of that data.
+
+## The Sanitization Layer
+Before a document reaches the Vector Store, it must go through a **Sanitization Pipeline**.
+- **Redaction:** Stripping out SSNs, Emails, and Phone Numbers.
+- **De-identification:** Replacing specific names with generic placeholders (e.g., "John Doe" becomes "Customer_A").
+- **Classification:** Tagging data as "Internal," "Confidential," or "Public."
+
+### Why it Matters
+If an employee asks the AI: *"What is the company's salary structure?"*, you want the AI to retrieve the *policy*, not the *actual spreadsheet* of everyone's pay. 
+
+## Context Ethics
+RAG should only retrieve what the user is authorized to see. This is called **Attribute-Based Access Control (ABAC)**. If the user doesn't have "Manager" clearance, the RAG engine shouldn't even search the "HR_Files" folder. 
+
+Protecting your data at the source is the only way to build a production-ready AI system.
