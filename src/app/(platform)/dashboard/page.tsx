@@ -110,8 +110,8 @@ export default function DashboardPage() {
   const stats = [
     { label: "Course Progress", value: `${averageProgress}%`, icon: Target, color: "#60A5FA", trend: "+12%" },
     { label: "Lessons Done", value: lessonsDone.toString(), icon: Trophy, color: "#FBBF24", trend: "+2" },
-    { label: "Day Streak", value: "7", icon: Flame, color: "#F97316", trend: "Active" },
-    { label: "Learning Time", value: "18h", icon: Clock, color: "#34D399", trend: "+3h" },
+    { label: "Day Streak", value: "0", icon: Flame, color: "#F97316", trend: "Active" },
+    { label: "Learning Time", value: "0h", icon: Clock, color: "#34D399", trend: "+0h" },
   ];
 
   const events = [
