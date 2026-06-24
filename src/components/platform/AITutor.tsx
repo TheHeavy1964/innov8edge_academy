@@ -85,13 +85,14 @@ export default function AITutor() {
       if (!response.ok) throw new Error("Failed to connect to Coach Innov8");
 
       // Handle streaming or simple response
-      const data = await response.json().catch(() => null);
+      const contentType = response.headers.get('content-type') || '';
       
-      if (data && data.content) {
+      if (contentType.includes('application/json')) {
+        const data = await response.json();
         setMessages(prev => [...prev, {
           id: (Date.now() + 1).toString(),
           role: 'assistant',
-          content: data.content
+          content: data.content || "Sorry, I couldn't process that request."
         }]);
       } else {
         const reader = response.body?.getReader();
