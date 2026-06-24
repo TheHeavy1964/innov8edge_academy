@@ -15,6 +15,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://innov8edgeacademy.vercel.app"),
   title: {
     template: "%s | Innov8Edge Academy",
     default: "Innov8Edge Academy — Learn AI Automation by Building Real AI Systems",
