@@ -342,14 +342,24 @@ export default function LessonClient({ lesson, trackId }: LessonClientProps) {
                       {/* Video Player */}
                       <div className="rounded-[28px] overflow-hidden border border-white/10 bg-black aspect-video relative shadow-2xl">
                         {liveVideoUrl ? (
-                          <iframe
-                            key={liveVideoUrl}
-                            src={toEmbedUrl(liveVideoUrl)}
-                            className="absolute inset-0 w-full h-full border-0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
-                            allowFullScreen
-                            title="Lesson Video"
-                          />
+                          liveVideoUrl.toLowerCase().endsWith('.mp4') ? (
+                            <video
+                              key={liveVideoUrl}
+                              src={liveVideoUrl}
+                              controls
+                              playsInline
+                              className="absolute inset-0 w-full h-full object-contain bg-black"
+                            />
+                          ) : (
+                            <iframe
+                              key={liveVideoUrl}
+                              src={toEmbedUrl(liveVideoUrl)}
+                              className="absolute inset-0 w-full h-full border-0"
+                              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+                              allowFullScreen
+                              title="Lesson Video"
+                            />
+                          )
                         ) : (
                           <div className="absolute inset-0 flex items-center justify-center">
                             <div className="w-8 h-8 border-2 border-white/30 border-t-white rounded-full animate-spin" />
