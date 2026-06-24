@@ -8,7 +8,7 @@ const supabaseAdmin = createClient(
 );
 
 // The URL of your external Admin Portal endpoint that will receive the enriched data
-const ADMIN_PORTAL_WEBHOOK_URL = 'https://innov8edge.sbs/api/academy-sync';
+const ADMIN_PORTAL_WEBHOOK_URL = 'https://otpcqamliwnauirgxaxl.supabase.co/functions/v1/academy-sync';
 
 export async function POST(req: Request) {
   try {
@@ -49,7 +49,7 @@ export async function POST(req: Request) {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        // 'Authorization': `Bearer ${process.env.ADMIN_PORTAL_SECRET}` // If you set up a secret on the Lovable side
+        'X-Academy-Secret': process.env.ACADEMY_SYNC_SECRET || ''
       },
       body: JSON.stringify(enrichedPayload)
     });
