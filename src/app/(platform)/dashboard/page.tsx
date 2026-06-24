@@ -20,12 +20,14 @@ import {
   Sparkles
 } from "lucide-react";
 import { useProgress } from "@/hooks/useProgress";
+import { useMetrics } from "@/hooks/useMetrics";
 import { supabase, isConfigured } from "@/lib/supabase";
 import { getAllLessons } from "@/lib/curriculum";
 
 export default function DashboardPage() {
   const { user, loading: authLoading } = useAuth();
   const { progress, loading: progressLoading } = useProgress();
+  const { metrics, loading: metricsLoading } = useMetrics();
   const router = useRouter();
   const [trending, setTrending] = useState<any[]>([]);
 
@@ -96,7 +98,7 @@ export default function DashboardPage() {
     router.push(`${path}?remix=${item.id}`);
   };
 
-  if (authLoading || progressLoading) {
+  if (authLoading || progressLoading || metricsLoading) {
     return (
       <div className="flex flex-col items-center justify-center h-[60vh] gap-4">
         <div className="w-12 h-12 border-2 border-[var(--accent)] border-t-transparent rounded-full animate-spin" />
@@ -107,11 +109,19 @@ export default function DashboardPage() {
 
   if (!user) return null;
 
+  const formatLearningTime = (seconds: number) => {
+    if (seconds === 0) return "0m";
+    if (seconds < 3600) return `${Math.floor(seconds / 60)}m`;
+    const hours = Math.floor(seconds / 3600);
+    const mins = Math.floor((seconds % 3600) / 60);
+    return mins > 0 ? `${hours}h ${mins}m` : `${hours}h`;
+  };
+
   const stats = [
     { label: "Course Progress", value: `${averageProgress}%`, icon: Target, color: "#60A5FA", trend: "+12%" },
     { label: "Lessons Done", value: lessonsDone.toString(), icon: Trophy, color: "#FBBF24", trend: "+2" },
-    { label: "Day Streak", value: "0", icon: Flame, color: "#F97316", trend: "Active" },
-    { label: "Learning Time", value: "0h", icon: Clock, color: "#34D399", trend: "+0h" },
+    { label: "Day Streak", value: metrics.current_streak.toString(), icon: Flame, color: "#F97316", trend: "Active" },
+    { label: "Learning Time", value: formatLearningTime(metrics.total_learning_seconds), icon: Clock, color: "#34D399", trend: "Active" },
   ];
 
   const events = [

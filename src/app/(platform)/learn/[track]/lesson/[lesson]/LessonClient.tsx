@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useProgress } from "@/hooks/useProgress";
+import { useMetrics } from "@/hooks/useMetrics";
 import { useAuth } from "@/context/AuthContext";
 import { 
   ChevronLeft, 
@@ -60,8 +61,18 @@ export default function LessonClient({ lesson, trackId }: LessonClientProps) {
   const [isSimulating, setIsSimulating] = useState(false);
   const [sandboxTrace, setSandboxTrace] = useState<string[]>([]);
   const [sandboxOutput, setSandboxOutput] = useState<string | null>(null);
+  const { addLearningTime } = useMetrics();
+
   // Admin video management
   const [liveVideoUrl, setLiveVideoUrl] = useState("");
+
+  // Track active learning time
+  useEffect(() => {
+    const interval = setInterval(() => {
+      addLearningTime(60);
+    }, 60000);
+    return () => clearInterval(interval);
+  }, [addLearningTime]);
 
   // Fetch persisted video URL from Supabase on mount
   useEffect(() => {
