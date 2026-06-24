@@ -32,11 +32,25 @@ export const metadata: Metadata = {
     "AI builder",
     "Innov8Edge",
   ],
-  openGraph: {
+    openGraph: {
     title: "Innov8Edge Academy — Learn AI Automation by Building",
     description:
       "Master AI workflows, agents, and automation through interactive sandboxes. No coding required.",
     type: "website",
+    images: [
+      {
+        url: "/logo.png",
+        width: 1200,
+        height: 630,
+        alt: "Innov8Edge Academy Logo",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Innov8Edge Academy — Learn AI Automation by Building",
+    description: "Master AI workflows, agents, and automation through interactive sandboxes. No coding required.",
+    images: ["/logo.png"],
   },
 };
 
