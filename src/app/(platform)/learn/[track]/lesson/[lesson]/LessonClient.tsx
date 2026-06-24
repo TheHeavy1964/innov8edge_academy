@@ -342,7 +342,7 @@ export default function LessonClient({ lesson, trackId }: LessonClientProps) {
                       {/* Video Player */}
                       <div className="rounded-[28px] overflow-hidden border border-white/10 bg-black aspect-video relative shadow-2xl">
                         {liveVideoUrl ? (
-                          liveVideoUrl.toLowerCase().endsWith('.mp4') ? (
+                          liveVideoUrl.toLowerCase().includes('.mp4') ? (
                             <video
                               key={liveVideoUrl}
                               src={liveVideoUrl}
