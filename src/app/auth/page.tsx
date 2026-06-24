@@ -67,6 +67,23 @@ export default function AuthPage() {
     }
   };
 
+  const handleOAuth = async (provider: 'google' | 'github') => {
+    try {
+      setLoading(true);
+      setError(null);
+      const { error } = await supabase.auth.signInWithOAuth({
+        provider,
+        options: {
+          redirectTo: `${window.location.origin}/dashboard`
+        }
+      });
+      if (error) throw error;
+    } catch (err: any) {
+      setError(err.message);
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-[#0A120B] flex items-center justify-center p-6 relative overflow-hidden">
       {/* Background Decor */}
@@ -226,12 +243,22 @@ export default function AuthPage() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-4 opacity-50 pointer-events-none">
-                <button type="button" className="flex items-center justify-center gap-2 p-3 rounded-2xl bg-white/5 border border-white/10 text-white text-xs font-bold">
+              <div className="grid grid-cols-2 gap-4">
+                <button 
+                  type="button" 
+                  onClick={() => handleOAuth('google')}
+                  disabled={loading || !isConfigured}
+                  className="flex items-center justify-center gap-2 p-3 rounded-2xl bg-white/5 border border-white/10 text-white text-xs font-bold hover:bg-white/10 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                >
                   <Globe className="w-4 h-4" />
                   Google
                 </button>
-                <button type="button" className="flex items-center justify-center gap-2 p-3 rounded-2xl bg-white/5 border border-white/10 text-white text-xs font-bold">
+                <button 
+                  type="button" 
+                  onClick={() => handleOAuth('github')}
+                  disabled={loading || !isConfigured}
+                  className="flex items-center justify-center gap-2 p-3 rounded-2xl bg-white/5 border border-white/10 text-white text-xs font-bold hover:bg-white/10 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                >
                   <GitBranch className="w-4 h-4" />
                   GitHub
                 </button>
