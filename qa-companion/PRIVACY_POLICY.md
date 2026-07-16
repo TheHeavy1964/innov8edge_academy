@@ -2,20 +2,28 @@
 
 **Effective Date:** June 26, 2026
 
-## 1. Information We Collect
-The Innov8Edge QA Companion extension is designed exclusively for internal use by employees and interns of Innov8Edge. To function properly, the extension collects:
-- **Authentication Data:** We collect your Innov8Edge email address via Supabase authentication to verify your identity and authorization to access internal testing criteria.
-- **QA Testing Data:** We temporarily process the pass/fail statuses and notes you enter during QA testing. This data is used solely for internal quality assurance and bug reporting.
-- **Screen Captures (Optional):** If utilized, the extension may capture the visible tab of the browser to attach to bug reports. This is strictly triggered by user action and is never recorded in the background.
+This privacy policy describes how the Innov8Edge QA Companion Chrome Extension ("we", "us", or "our") collects, uses, handles, stores, and shares user data.
+
+## 1. Information We Collect (User Data Collection)
+The Innov8Edge QA Companion extension is designed exclusively for internal use by employees and interns of Innov8Edge. We collect the following user data:
+- **Authentication Data:** We collect your Innov8Edge email address via Supabase authentication. This is collected when you log in.
+- **QA Testing Data:** We collect the pass/fail statuses, test notes, and feedback you manually enter into the extension interface.
+- **Screen Captures:** If utilized, the extension may capture the visible tab of the browser to attach to bug reports. This data is only collected when explicitly triggered by the user clicking the screen capture button.
 
 ## 2. How We Use Your Information
-The data collected is used exclusively for internal product development, bug tracking, and quality assurance of Innov8Edge Academy and Meal Genie-Pro.
+The data collected is used exclusively for the following purposes:
+- To verify your identity and authorization to access internal testing criteria.
+- To process, track, and manage internal quality assurance tasks and bug reporting for Innov8Edge Academy and Meal Genie-Pro.
+- We do not use your data for advertising, profiling, or any other unrelated purposes.
 
-## 3. Data Storage and Handling
-Data collected by the extension is stored securely in Innov8Edge's internal databases (Supabase). We handle all data in compliance with internal security standards. Data is retained only as long as necessary for resolving QA tasks and bug reports.
+## 3. Data Handling and Storage
+- **Data Handling:** All user data is handled securely. Data transmitted between the extension and our servers is encrypted in transit using industry-standard HTTPS/TLS protocols.
+- **Data Storage:** Data collected by the extension is stored securely in Innov8Edge's internal databases hosted on Supabase. We do not store any sensitive personal data locally on your device other than standard session authentication tokens. Data is retained only as long as necessary for resolving QA tasks and bug reports.
 
-## 4. Data Sharing and Disclosure
-We do not sell, rent, or share any personal information or testing data with third parties. All data remains within the internal Innov8Edge development ecosystem.
+## 4. Data Sharing and All Parties Data is Shared With
+- **Data Sharing:** We do not sell, rent, or share any personal information or testing data with third parties for marketing or advertising purposes.
+- **Third Parties:** The ONLY party your data is shared with is our cloud infrastructure and database provider, **Supabase**, which is used strictly for authentication and secure data storage on our behalf. 
+- All data remains strictly within the internal Innov8Edge development ecosystem.
 
 ## 5. Contact Us
-If you have questions about this privacy policy, please contact your Innov8Edge system administrator.
+If you have questions about this privacy policy or our data practices, please contact your Innov8Edge system administrator.
