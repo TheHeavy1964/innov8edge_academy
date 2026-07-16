@@ -8,6 +8,7 @@ This privacy policy describes how the Innov8Edge QA Companion Chrome Extension (
 The Innov8Edge QA Companion extension is designed exclusively for internal use by employees and interns of Innov8Edge. We collect the following user data:
 - **Authentication Data:** We collect your Innov8Edge email address via Supabase authentication. This is collected when you log in.
 - **QA Testing Data:** We collect the pass/fail statuses, test notes, and feedback you manually enter into the extension interface.
+- **Website Data (URLs and Active Tab):** The extension requires permissions to access the active tab and all URLs (`<all_urls>`, `tabs`, `activeTab`). This access is used strictly to auto-populate the current website URL into bug reports and QA context. We only process this data when you actively use the extension to log an issue; it is never tracked or monitored in the background.
 - **Screen Captures:** If utilized, the extension may capture the visible tab of the browser to attach to bug reports. This data is only collected when explicitly triggered by the user clicking the screen capture button.
 
 ## 2. How We Use Your Information
