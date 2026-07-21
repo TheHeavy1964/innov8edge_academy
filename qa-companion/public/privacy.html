@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — Innov8Edge QA Companion</title>
+  <meta name="description" content="Privacy Policy for the Innov8Edge QA Companion Chrome Extension. Learn how we collect, use, store, and share your data." />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --ia-blue: #0A4871;
+      --ia-blue-light: #0d5a8e;
+      --ia-green: #39B54A;
+      --bg-page: #F4F7F9;
+      --bg-card: #ffffff;
+      --text-primary: #1e293b;
+      --text-secondary: #475569;
+      --text-muted: #94a3b8;
+      --border: #e2e8f0;
+      --shadow-sm: 0 1px 3px rgba(10, 72, 113, 0.06);
+      --shadow-md: 0 4px 16px rgba(10, 72, 113, 0.08);
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg-page);
+      color: var(--text-primary);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Header ─────────────────────────────────── */
+    .pp-header {
+      background: linear-gradient(135deg, var(--ia-blue) 0%, var(--ia-blue-light) 100%);
+      padding: 2.5rem 1.5rem 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pp-header::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--ia-green), var(--ia-blue-light), var(--ia-green));
+    }
+
+    .pp-header__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(255,255,255,0.12);
+      backdrop-filter: blur(8px);
+      padding: 0.35rem 0.85rem;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.9);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 1rem;
+      border: 1px solid rgba(255,255,255,0.15);
+    }
+
+    .pp-header__badge svg {
+      width: 14px;
+      height: 14px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .pp-header h1 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 0.35rem;
+    }
+
+    .pp-header__effective {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.65);
+      font-weight: 500;
+    }
+
+    /* ── Content Card ───────────────────────────── */
+    .pp-content {
+      max-width: 680px;
+      margin: -1rem auto 2rem;
+      padding: 0 1rem;
+    }
+
+    .pp-card {
+      background: var(--bg-card);
+      border-radius: 16px;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .pp-section {
+      padding: 1.5rem 1.75rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .pp-section:last-child {
+      border-bottom: none;
+    }
+
+    .pp-section__number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--ia-blue), var(--ia-blue-light));
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 700;
+      margin-right: 0.65rem;
+      flex-shrink: 0;
+      box-shadow: 0 2px 6px rgba(10, 72, 113, 0.2);
+    }
+
+    .pp-section h2 {
+      display: flex;
+      align-items: center;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--ia-blue);
+      margin-bottom: 0.85rem;
+    }
+
+    .pp-section p,
+    .pp-section li {
+      font-size: 0.84rem;
+      color: var(--text-secondary);
+      line-height: 1.75;
+    }
+
+    .pp-section ul {
+      list-style: none;
+      padding: 0;
+      margin: 0.5rem 0 0;
+    }
+
+    .pp-section li {
+      position: relative;
+      padding-left: 1.25rem;
+      margin-bottom: 0.65rem;
+    }
+
+    .pp-section li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.55em;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--ia-green);
+    }
+
+    .pp-section strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    /* ── Highlight Box (for important notes) ──── */
+    .pp-highlight {
+      background: linear-gradient(135deg, rgba(10, 72, 113, 0.04), rgba(57, 181, 74, 0.04));
+      border: 1px solid rgba(10, 72, 113, 0.1);
+      border-radius: 10px;
+      padding: 1rem 1.15rem;
+      margin-top: 0.75rem;
+    }
+
+    .pp-highlight p {
+      font-size: 0.82rem;
+      color: var(--ia-blue);
+    }
+
+    /* ── Contact Box ────────────────────────────── */
+    .pp-contact {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: linear-gradient(135deg, var(--ia-blue), var(--ia-blue-light));
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+      margin-top: 0.5rem;
+    }
+
+    .pp-contact__icon {
+      width: 36px;
+      height: 36px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .pp-contact__icon svg {
+      width: 18px;
+      height: 18px;
+      fill: none;
+      stroke: #fff;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .pp-contact a {
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.84rem;
+      text-decoration: none;
+    }
+
+    .pp-contact a:hover {
+      text-decoration: underline;
+    }
+
+    .pp-contact__label {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.65);
+      font-weight: 500;
+    }
+
+    /* ── Footer ─────────────────────────────────── */
+    .pp-footer {
+      text-align: center;
+      padding: 1.25rem 1rem 2rem;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+    }
+
+    .pp-footer a {
+      color: var(--ia-blue);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .pp-footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* ── Back Button (for in-extension use) ───── */
+    .pp-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      margin: 1rem 0 0 1rem;
+      padding: 0.4rem 0.85rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--bg-card);
+      color: var(--ia-blue);
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .pp-back:hover {
+      background: var(--ia-blue);
+      color: #fff;
+      border-color: var(--ia-blue);
+    }
+
+    .pp-back svg {
+      width: 14px;
+      height: 14px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+  </style>
+</head>
+<body>
+
+  <a href="/index.html" class="pp-back" id="back-to-extension">
+    <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+    Back to Extension
+  </a>
+
+  <header class="pp-header">
+    <div class="pp-header__badge">
+      <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      Innov8Edge QA Companion
+    </div>
+    <h1>Privacy Policy</h1>
+    <p class="pp-header__effective">Effective Date: June 26, 2026</p>
+  </header>
+
+  <div class="pp-content">
+    <div class="pp-card">
+
+      <!-- Intro -->
+      <div class="pp-section">
+        <p>This privacy policy describes how the <strong>Innov8Edge QA Companion</strong> Chrome Extension ("we", "us", or "our") collects, uses, handles, stores, and shares user data.</p>
+      </div>
+
+      <!-- Section 1 -->
+      <div class="pp-section">
+        <h2><span class="pp-section__number">1</span> Information We Collect</h2>
+        <p>The Innov8Edge QA Companion extension is designed exclusively for internal use by employees and interns of Innov8Edge. We collect the following user data:</p>
+        <ul>
+          <li><strong>Authentication Data:</strong> We collect your Innov8Edge email address via Supabase authentication. This is collected when you log in.</li>
+          <li><strong>QA Testing Data:</strong> We collect the pass/fail statuses, test notes, and feedback you manually enter into the extension interface.</li>
+          <li><strong>Website Data (URLs and Active Tab):</strong> The extension requires permissions to access the active tab and all URLs (<code>&lt;all_urls&gt;</code>, <code>tabs</code>, <code>activeTab</code>). This access is used strictly to auto-populate the current website URL into bug reports and QA context. We only process this data when you actively use the extension to log an issue; it is never tracked or monitored in the background.</li>
+          <li><strong>Screen Captures:</strong> If utilized, the extension may capture the visible tab of the browser to attach to bug reports. This data is only collected when explicitly triggered by the user clicking the screen capture button.</li>
+        </ul>
+      </div>
+
+      <!-- Section 2 -->
+      <div class="pp-section">
+        <h2><span class="pp-section__number">2</span> How We Use Your Information</h2>
+        <p>The data collected is used exclusively for the following purposes:</p>
+        <ul>
+          <li>To verify your identity and authorization to access internal testing criteria.</li>
+          <li>To process, track, and manage internal quality assurance tasks and bug reporting for Innov8Edge Academy and Meal Genie-Pro.</li>
+        </ul>
+        <div class="pp-highlight">
+          <p><strong>We do not</strong> use your data for advertising, profiling, or any other purpose unrelated to internal QA operations.</p>
+        </div>
+      </div>
+
+      <!-- Section 3 -->
+      <div class="pp-section">
+        <h2><span class="pp-section__number">3</span> Data Handling and Storage</h2>
+        <ul>
+          <li><strong>Data Handling:</strong> All user data is handled securely. Data transmitted between the extension and our servers is encrypted in transit using industry-standard HTTPS/TLS protocols.</li>
+          <li><strong>Data Storage:</strong> Data collected by the extension is stored securely in Innov8Edge's internal databases hosted on Supabase. We do not store any sensitive personal data locally on your device other than standard session authentication tokens.</li>
+          <li><strong>Data Retention:</strong> Data is retained only as long as necessary for resolving QA tasks and bug reports.</li>
+        </ul>
+      </div>
+
+      <!-- Section 4 -->
+      <div class="pp-section">
+        <h2><span class="pp-section__number">4</span> Data Sharing &amp; Third Parties</h2>
+        <p>We do not sell, rent, or share any personal information or testing data with third parties for marketing or advertising purposes.</p>
+        <ul>
+          <li><strong>Supabase:</strong> The <strong>only</strong> third party your data is shared with is our cloud infrastructure and database provider, <strong>Supabase</strong>, which is used strictly for authentication and secure data storage on our behalf.</li>
+        </ul>
+        <div class="pp-highlight">
+          <p>All data remains strictly within the internal Innov8Edge development ecosystem.</p>
+        </div>
+      </div>
+
+      <!-- Section 5 -->
+      <div class="pp-section">
+        <h2><span class="pp-section__number">5</span> User Rights &amp; Data Deletion</h2>
+        <p>You have the right to request access to, correction of, or deletion of your personal data at any time. To exercise these rights, contact your Innov8Edge system administrator.</p>
+        <ul>
+          <li>Upon a verified request, we will delete your personal data within <strong>30 days</strong>, except where retention is required by law or for legitimate internal record-keeping purposes.</li>
+          <li>You may also request a copy of the data we hold about you in a commonly used electronic format.</li>
+        </ul>
+      </div>
+
+      <!-- Section 6 -->
+      <div class="pp-section">
+        <h2><span class="pp-section__number">6</span> Changes to This Policy</h2>
+        <p>We may update this Privacy Policy from time to time. Any changes will be reflected by an updated "Effective Date" at the top of this document. We encourage you to review this Privacy Policy periodically.</p>
+      </div>
+
+      <!-- Section 7 -->
+      <div class="pp-section">
+        <h2><span class="pp-section__number">7</span> Contact Us</h2>
+        <p>If you have questions about this privacy policy or our data practices, please contact your Innov8Edge system administrator.</p>
+        <div class="pp-contact">
+          <div class="pp-contact__icon">
+            <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22,7 12,13 2,7"/></svg>
+          </div>
+          <div>
+            <a href="mailto:privacy@innov8edge.com">privacy@innov8edge.com</a>
+            <div class="pp-contact__label">Privacy &amp; Data Requests</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="pp-footer">
+      &copy; 2026 Innov8Edge. All rights reserved. &nbsp;|&nbsp;
+      <a href="/index.html">Back to QA Companion</a>
+    </div>
+  </div>
+
+</body>
+</html>

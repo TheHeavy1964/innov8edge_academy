@@ -26,5 +26,11 @@ The data collected is used exclusively for the following purposes:
 - **Third Parties:** The ONLY party your data is shared with is our cloud infrastructure and database provider, **Supabase**, which is used strictly for authentication and secure data storage on our behalf. 
 - All data remains strictly within the internal Innov8Edge development ecosystem.
 
-## 5. Contact Us
-If you have questions about this privacy policy or our data practices, please contact your Innov8Edge system administrator.
+## 5. User Rights and Data Deletion
+You have the right to request access to, correction of, or deletion of your personal data at any time. To exercise these rights, contact your Innov8Edge system administrator at **privacy@innov8edge.com**. Upon a verified request, we will delete your personal data within 30 days, except where retention is required by law or for legitimate internal record-keeping purposes.
+
+## 6. Changes to This Privacy Policy
+We may update this Privacy Policy from time to time. Any changes will be reflected by an updated "Effective Date" at the top of this document. We encourage you to review this Privacy Policy periodically.
+
+## 7. Contact Us
+If you have questions about this privacy policy or our data practices, please contact your Innov8Edge system administrator at **privacy@innov8edge.com**.
